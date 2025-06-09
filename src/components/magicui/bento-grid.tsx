@@ -38,9 +38,9 @@ export const BentoCard = ({
   cta?: string;
   children?: ReactNode;
 }) => {
-  const [isCalendar , setisCalendar] = useState(false)
-  const [calicon , setIscalicon] = useState(false)
-  const [isdescription , setIsdescription] = useState(false)
+  const [isCalendar , setisCalendar] = useState<boolean>(false)
+  const [calicon , setIscalicon] = useState<boolean>(false)
+  const [isdescription , setIsdescription] = useState<boolean>(false)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ export const BentoCard = ({
       className={cn(
         "relative overflow-hidden rounded-3xl bg-black/60 dark:bg-black/60 shadow-2xl border border-white/10 backdrop-blur-xl flex flex-col justify-between p-10 min-h-[300px] group",
         className
-      )} onMouseEnter = {(e) => {
+      )} onMouseEnter = {(e: React.MouseEvent<HTMLElement>) => {
         if (title === 'Calendar' || title === 'Integrate your social media accounts with your portfolio'){
           e.preventDefault()
           setisCalendar(true)
@@ -57,7 +57,7 @@ export const BentoCard = ({
           setIsdescription(true)
           return
         }
-      }} onMouseLeave = {(e) => {
+      }} onMouseLeave = {(e : React.MouseEvent<HTMLElement>) => {
         if (title === 'Calendar' || title === 'Integrate your social media accounts with your portfolio'){
           e.preventDefault()
           setisCalendar(false)
