@@ -47,7 +47,7 @@ export const BentoCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "relative overflow-hidden rounded-3xl bg-black/60 dark:bg-black/60 shadow-2xl border border-white/10 backdrop-blur-xl flex flex-col justify-between p-10 min-h-[300px] group",
+        "relative overflow-hidden rounded-3xl flex flex-col justify-between p-10 min-h-[300px] group",
         className
       )} onMouseEnter = {(e: React.MouseEvent<HTMLElement>) => {
         if (title === 'Calendar' || title === 'Integrate your social media accounts with your portfolio'){
@@ -76,19 +76,19 @@ export const BentoCard = ({
       {/* Card content */}
       <div className="relative z-10 flex flex-col h-full items-start">
         {icon && !calicon && (
-          <div className="mb-5 text-4xl text-white/80 dark:text-white/90">{icon}</div>
+          <div className="mb-5 text-4xl text-inherit">{icon}</div>
         )}
         {title && !isCalendar && (
-          <h3 className="text-2xl font-extrabold mb-2 text-white leading-tight drop-shadow-lg">{title}</h3>
+          <h3 className="text-2xl font-extrabold mb-2 text-inherit leading-tight drop-shadow-lg">{title}</h3>
         )}
         {description && !isdescription && (
-          <p className="text-base text-zinc-300 dark:text-zinc-300 mb-4 flex-1 leading-relaxed">{description}</p>
+          <p className="text-base mb-4 flex-1 leading-relaxed text-inherit">{description}</p>
         )}
         {children}
         {href && cta && (
           <a
             href={href}
-            className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-white/80 hover:text-white transition-colors"
+            className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-inherit hover:text-black transition-colors"
           >
             {cta} <span aria-hidden>→</span>
           </a>

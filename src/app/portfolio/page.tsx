@@ -13,12 +13,14 @@ import { Send } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import BentoDemo from "@/components/bento-grid-demo";
 import CoverDemo from "@/components/cover-demo";
+import { ThreeDMarquee } from '@/components/ui/3d-marquee';
+import { useTheme } from '@/context/ThemeContext';
 
 // Base64 encoded avatar image (simple gray placeholder)
-const AVATAR_DATA_URL = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMxRjI5MzciLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4NSIgcj0iMzUiIGZpbGw9IiM0QjU1NjMiLz48cGF0aCBkPSJNMTAwIDEzNUMxMzMuMTM3IDEzNSAxNjAgMTYxLjg2MyAxNjAgMTk1VjIwMEg0MFYxOTVDNDAgMTYxLjg2MyA2Ni44NjI5IDEzNSAxMDAgMTM1WiIgZmlsbD0iIzRCNTU2MyIvPjwvc3ZnPg==';
+const AVATAR_DATA_URL = '/avatar.png';
 
 // Background pattern URL (properly encoded)
-const GRID_PATTERN = "data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='%23374151' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E";
+const GRID_PATTERN = '/grid-pattern.svg';
 
 const skills = [
   { name: 'React/Next.js', level: 95, category: 'Frontend' },
@@ -103,36 +105,21 @@ const testimonials = [
   }
 ];
 
-// Add this new component before the PortfolioPage component
-const Marquee3D = () => {
-  const items = [
-    "React", "Next.js", "TypeScript", "Node.js", "MongoDB", "AWS",
-    "UI/UX", "Tailwind", "GraphQL", "Docker", "Kubernetes", "Python"
-  ];
-
-  return (
-    <div className="w-full overflow-hidden bg-black py-4">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {[...items, ...items].map((item) => (
-          <div
-            key={item}
-            className="mx-4 text-4xl font-bold text-white/10 hover:text-white/30 transition-colors duration-300"
-            style={{
-              transform: `perspective(1000px) rotateX(20deg)`,
-              textShadow: '0 0 10px rgba(255,255,255,0.1)'
-            }}
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+// Add a sample images array for the 3D marquee
+const marqueeImages = [
+  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
+  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop',
+  'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=2070&auto=format&fit=crop',
+];
 
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -151,7 +138,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dark-surface text-white">
+    <div className={theme === 'light' ? 'min-h-screen w-full bg-white' : 'min-h-screen w-full bg-black'}>
       {/* Navigation */}
       <nav className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b border-dark-border",
@@ -189,15 +176,15 @@ export default function PortfolioPage() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex flex-col items-center justify-center bg-black">
+      <section id="home" className={theme === 'light' ? 'relative min-h-screen flex flex-col items-center justify-center bg-white' : 'relative min-h-screen flex flex-col items-center justify-center bg-black'}>
         <div className="absolute inset-0" style={{ backgroundImage: `url(${GRID_PATTERN})`, opacity: 0.08 }}></div>
         {/* Subtle radial accent behind avatar/title */}
-        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-br from-accent/30 via-accent/10 to-transparent rounded-full blur-3xl opacity-60 z-0"></div>
-        <Marquee3D />
+        <div className={theme === 'light' ? 'absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-br from-cyan-200 via-cyan-100 to-transparent rounded-full blur-3xl opacity-60 z-0' : 'absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-br from-accent/30 via-accent/10 to-transparent rounded-full blur-3xl opacity-60 z-0'}></div>
+        <ThreeDMarquee images={marqueeImages} />
         <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl mx-auto px-6 pt-12 pb-20">
           {/* Avatar with animated glow */}
-          <div className="w-36 h-36 mb-8 rounded-full bg-gradient-to-r from-accent to-accent-dark p-1 shadow-accent animate-pulse-slow">
-            <div className="w-full h-full rounded-full bg-dark-surface flex items-center justify-center">
+          <div className={theme === 'light' ? 'w-36 h-36 mb-8 rounded-full bg-gradient-to-r from-cyan-300 to-cyan-500 p-1 shadow-cyan-400 animate-pulse-slow' : 'w-36 h-36 mb-8 rounded-full bg-gradient-to-r from-accent to-accent-dark p-1 shadow-accent animate-pulse-slow'}>
+            <div className={theme === 'light' ? 'w-full h-full rounded-full bg-white flex items-center justify-center' : 'w-full h-full rounded-full bg-dark-surface flex items-center justify-center'}>
               <Avatar className="w-full h-full">
                 <AvatarImage src={AVATAR_DATA_URL} alt="Profile" />
                 <AvatarFallback>CN</AvatarFallback>
@@ -205,7 +192,7 @@ export default function PortfolioPage() {
             </div>
           </div>
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-white via-accent to-accent-dark bg-clip-text text-transparent drop-shadow-lg animate-fade-in text-center">
+          <h1 className={theme === 'light' ? 'text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 bg-clip-text text-transparent drop-shadow-lg animate-fade-in text-center' : 'text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-white via-accent to-accent-dark bg-clip-text text-transparent drop-shadow-lg animate-fade-in text-center'}>
             Hire Top Freelancers at Warp Speed
           </h1>
           {/* Subtitle */}
@@ -213,7 +200,7 @@ export default function PortfolioPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in text-center"
+            className={theme === 'light' ? 'text-xl md:text-2xl text-cyan-700 mb-8 max-w-2xl mx-auto animate-fade-in text-center' : 'text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in text-center'}
           >
             AssuredGig connects you with the best talent for your project, fast and securely.
           </motion.p>
@@ -661,6 +648,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }

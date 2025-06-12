@@ -6,6 +6,7 @@ import { FileText, Calendar, MessageSquare, CheckCircle2, Target, Award, Activit
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import {useRouter} from 'next/navigation'
+import { useTheme } from '@/context/ThemeContext';
 
 const contracts = [
   { id: 1, title: 'E-commerce Platform Development', client: 'TechCorp Inc.', progress: 68 },
@@ -155,17 +156,18 @@ const ProgressTimeline = ({ milestones }: { milestones: typeof contractDetails.m
 export default function ContractsPage() {
   const [selected, setSelected] = useState<number | null>(null);
   const navigate = useRouter()
+  const { theme } = useTheme();
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col">
-      <section className="w-full border-b border-[#23272e] py-10 bg-black">
+    <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
+      <section className={theme === 'light' ? 'w-full border-b border-cyan-200 py-10 bg-white' : 'w-full border-b border-[#23272e] py-10 bg-black'}>
         <div className="max-w-7xl mx-auto px-6 flex md:items-center md:justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center">
-              <Target className="w-7 h-7 text-indigo-400" />
+            <div className={theme === 'light' ? 'w-14 h-14 bg-cyan-100 border border-cyan-200 rounded-2xl flex items-center justify-center' : 'w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl flex items-center justify-center'}>
+              <Target className={theme === 'light' ? 'w-7 h-7 text-cyan-400' : 'w-7 h-7 text-cyan-400'} />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-1">Contracts</h1>
-              <p className="text-gray-400 text-base">All your contracts</p>
+              <h1 className={theme === 'light' ? 'text-3xl md:text-4xl font-bold text-cyan-700 mb-1' : 'text-3xl md:text-4xl font-bold text-white mb-1'}>Contracts</h1>
+              <p className={theme === 'light' ? 'text-gray-500 text-base' : 'text-gray-400 text-base'}>All your contracts</p>
             </div>
           </div>
         </div>
@@ -174,21 +176,21 @@ export default function ContractsPage() {
         <div className="max-w-7xl mx-auto grid gap-8">
           {/* Contracts List */}
           <div className="md:col-span-2 flex-col gap-8 grid">
-            <div className="bg-[#161b22] border border-[#23272e] rounded-2xl shadow-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Target className="w-5 h-5 text-indigo-400" />
+            <div className={theme === 'light' ? 'bg-cyan-50 border border-cyan-200 rounded-2xl shadow-lg p-6' : 'bg-[#161b22] border border-[#23272e] rounded-2xl shadow-lg p-6'}>
+              <h3 className={theme === 'light' ? 'text-lg font-semibold text-cyan-700 mb-4 flex items-center gap-2' : 'text-lg font-semibold text-white mb-4 flex items-center gap-2'}>
+                <Target className={theme === 'light' ? 'w-5 h-5 text-cyan-400' : 'w-5 h-5 text-cyan-400'} />
                 Active Contracts
               </h3>
               <div className="space-y-3">
                 {contracts.map((contract) => (
-                  <button key={contract.id} onClick={() => setSelected(contract.id)} className="block w-full text-left p-4 rounded-xl transition-all duration-300 border bg-[#23272e] hover:bg-[#23272e]/80 border-[#23272e] cursor-pointer">
+                  <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl transition-all duration-300 border bg-cyan-100 hover:bg-cyan-200 border-cyan-200 cursor-pointer' : 'block w-full text-left p-4 rounded-xl transition-all duration-300 border bg-[#23272e] hover:bg-[#23272e]/80 border-[#23272e] cursor-pointer'}>
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className="font-medium text-sm text-white">{contract.title}</h4>
-                        <p className="text-xs text-gray-400 mt-1">{contract.client}</p>
+                        <h4 className={theme === 'light' ? 'font-medium text-sm text-cyan-700' : 'font-medium text-sm text-white'}>{contract.title}</h4>
+                        <p className={theme === 'light' ? 'text-xs text-gray-500 mt-1' : 'text-xs text-gray-400 mt-1'}>{contract.client}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-xs px-2 py-1 rounded-full font-semibold bg-indigo-500/10 text-indigo-400">
+                        <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-cyan-200 text-cyan-700' : 'text-xs px-2 py-1 rounded-full font-semibold bg-cyan-500/10 text-cyan-400'}>
                           {contract.progress}%
                         </div>
                       </div>

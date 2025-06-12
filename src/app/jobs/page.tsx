@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { jobsApi } from '@/lib/api-client';
 
 interface Job {
   id: string;
@@ -12,26 +11,30 @@ interface Job {
   createdAt: string;
 }
 
+// Add mock jobs data
+const mockJobs: Job[] = [
+  {
+    id: '1',
+    title: 'Frontend Developer',
+    description: 'Build a modern React frontend for our SaaS platform.',
+    budget: 1200,
+    status: 'open',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: '2',
+    title: 'UI/UX Designer',
+    description: 'Design a clean and user-friendly dashboard.',
+    budget: 900,
+    status: 'open',
+    createdAt: new Date().toISOString(),
+  },
+];
+
 export default function JobsPage() {
-  const [jobs, setJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const data = await jobsApi.getJobs();
-        setJobs(data);
-      } catch (err) {
-        setError('Failed to fetch jobs');
-        console.error('Error fetching jobs:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchJobs();
-  }, []);
+  const [jobs, setJobs] = useState<Job[]>(mockJobs);
+  const [loading] = useState(false);
+  const [error] = useState<string | null>(null);
 
   if (loading) {
     return (

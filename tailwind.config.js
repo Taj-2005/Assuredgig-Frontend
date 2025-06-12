@@ -28,10 +28,10 @@ module.exports = {
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				light: '#ff5efc',
-  				dark: '#cc00b8',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: '#06b6d4',
+  				light: '#67e8f9',
+  				dark: '#164e63',
+  				foreground: '#fff'
   			},
   			glass: 'rgba(20, 30, 50, 0.7)',
   			border: 'hsl(var(--border))',

@@ -7,6 +7,7 @@ import AnimatedListDemo from "@/registry/example/animated-list-demo";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import { Marquee } from "@/components/magicui/marquee";
 import IntegrationNetwork from "@/components/magicui/integration-network";
+import { useTheme } from "@/context/ThemeContext";
 
 // const files = [
 //   {
@@ -121,10 +122,23 @@ const features = [
 ];
 
 export default function BentoDemo() {
+  const { theme } = useTheme();
   return (
     <BentoGrid>
       {features.map((feature, idx) => (
-        <BentoCard key={idx} {...feature} className={feature.className} />
+        <BentoCard
+          key={idx}
+          {...feature}
+          className={
+            theme === "light"
+              ? cn(
+                  feature.className,
+                  "bg-white border-gray-200 text-gray-900 shadow-md",
+                  "hover:shadow-lg transition-shadow duration-200"
+                )
+              : feature.className
+          }
+        />
       ))}
     </BentoGrid>
   );
