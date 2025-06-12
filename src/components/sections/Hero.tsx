@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="flex flex-1 items-center justify-center w-full">
         <main className="w-full px-4 flex flex-col items-center justify-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 text-center leading-tight">
-            The Future of <span className="text-indigo-400">Freelancing</span>
+            The Future of <span className="text-cyan-400">Freelancing</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 text-center max-w-2xl">
             Find Your Next Freelance Opportunity

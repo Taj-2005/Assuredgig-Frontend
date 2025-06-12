@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">
               AssuredGig
             </span>
           </Link>
@@ -63,7 +63,7 @@ export default function Navbar() {
                           'px-3 py-2 text-sm font-medium rounded-md transition-colors',
                           pathname === item.path
                             ? 'text-white bg-white/10'
-                            : 'text-gray-300 hover:text-white hover:bg-white/5'
+                            : 'text-gray-300 hover:text-cyan-400 hover:bg-white/5'
                         )}
                       >
                         {item.name}
@@ -110,8 +110,8 @@ export default function Navbar() {
                   className={cn(
                     'block px-3 py-2 rounded-md text-base font-medium transition-colors',
                     pathname === item.path
-                      ? 'text-white bg-white/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      ? 'text-gray-300 bg-white/10'
+                      : 'text-gray-300 hover:bg-white/5 hover:text-cyan-400'
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
