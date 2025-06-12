@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {useRouter} from 'next/navigation'
+import { useTheme } from '@/context/ThemeContext';
 
 const categories = [
   'All Categories',
@@ -79,6 +80,7 @@ export default function GigsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const navigate = useRouter()
+  const { theme } = useTheme();
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prev => 
@@ -89,23 +91,23 @@ export default function GigsPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col">
+    <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
       <Button
-          variant="secondary"
-          className="border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e] w-40 fixed top-2 left-3 z-10"
-          onClick = {(e) => {
-            e.preventDefault();
-            navigate.push('/')
-          }}
-        >
-          Back To Home
+        variant="secondary"
+        className={theme === 'light' ? 'border-cyan-300 text-cyan-600 hover:bg-cyan-50 w-40 fixed top-2 left-3 z-10' : 'border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e] w-40 fixed top-2 left-3 z-10'}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate.push('/')
+        }}
+      >
+        Back To Home
       </Button>
       <section className="relative min-h-[60vh] w-full">
         {/* Background Effects */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="w-full h-full bg-black" />
+          <div className={theme === 'light' ? 'w-full h-full bg-white' : 'w-full h-full bg-black'} />
           <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60" />
+          <div className={theme === 'light' ? 'absolute inset-0 bg-gradient-to-b from-cyan-100/90 via-cyan-100/80 to-cyan-100/60' : 'absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60'} />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-16">
           <motion.div

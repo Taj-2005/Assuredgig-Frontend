@@ -4,39 +4,76 @@ import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useTheme } from "@/context/ThemeContext";
+import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
+
+function HeroVideoDialogDemo() {
+  return (
+    <div className="relative w-full flex justify-center my-8">
+      <div className="w-full max-w-5xl">
+        <HeroVideoDialog
+          className="block dark:hidden w-full"
+          animationStyle="from-center"
+          videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+          thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+          thumbnailAlt="Hero Video"
+        />
+        <HeroVideoDialog
+          className="hidden dark:block w-full"
+          animationStyle="from-center"
+          videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+          thumbnailSrc="https://startup-template-sage.vercel.app/hero-dark.png"
+          thumbnailAlt="Hero Video"
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
+  const { theme } = useTheme();
   return (
-    <div className="relative min-h-screen flex flex-col bg-black">
+    <div className={theme === "light" ? "relative min-h-[80vh] flex flex-col bg-white" : "relative min-h-[80vh] flex flex-col bg-black"}>
       <Navbar />
-      <div className="flex flex-1 items-center justify-center w-full">
-        <main className="w-full px-4 flex flex-col items-center justify-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 text-center leading-tight">
+      <div className="flex flex-1 items-center justify-center w-full pt-24 pb-12">
+        <main className="w-full max-w-7xl px-4 flex flex-col items-center justify-center text-center">
+          <h1 className={theme === "light"
+            ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
+            : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"}
+          >
             The Future of <span className="text-cyan-400">Freelancing</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 text-center max-w-2xl">
-            Find Your Next Freelance Opportunity
-          </p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+          <p className={theme === "light"
+            ? "text-lg sm:text-xl md:text-2xl text-gray-500 mb-8 max-w-3xl mx-auto"
+            : "text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto"}
           >
+            Find your next freelance opportunity with confidence and security.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 w-40"
+              className={theme === "light"
+                ? "bg-cyan-400 text-white hover:bg-cyan-500 w-48 text-base font-semibold shadow-lg"
+                : "bg-primary text-primary-foreground hover:bg-primary/90 w-40"}
             >
               Get Started
             </Button>
             <Button
               size="lg"
               variant="ghost"
-              className="border-2 border-white text-white hover:bg-white hover:text-black w-40 transition-colors duration-200"
+              className={theme === "light"
+                ? "border-2 border-gray-300 text-gray-900 hover:bg-gray-100 w-48 text-base font-semibold"
+                : "border-2 border-white text-white hover:bg-white hover:text-black w-40 transition-colors duration-200"}
             >
               Learn More
             </Button>
-          </motion.div>
+          </div>
+          <HeroVideoDialogDemo />
+          {theme === "light" && (
+            <div className="mt-6 text-gray-400 text-sm text-center">
+              7 day free trial. No credit card required.
+            </div>
+          )}
         </main>
       </div>
     </div>
