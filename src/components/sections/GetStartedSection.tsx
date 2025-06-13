@@ -1,6 +1,8 @@
 import { FilePlusIcon, MagnifyingGlassIcon, BarChartIcon } from '@radix-ui/react-icons';
-
-const steps = [
+import { useTheme } from '@/context/ThemeContext';
+export default function GetStartedSection() {
+  const { theme } = useTheme();
+  const steps = [
   {
     icon: <FilePlusIcon className="w-7 h-7 text-cyan-500" />,
     title: 'Post Your Work',
@@ -17,14 +19,12 @@ const steps = [
     desc: "Release payment only when you're satisfied. Your funds are always protected."
   },
 ];
-
-export default function GetStartedSection() {
   return (
-    <section className="w-full py-24 px-4 bg-white">
+    <section className={`w-full py-24 px-4 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <div className="text-sm font-bold text-cyan-500 tracking-widest mb-3 uppercase">HOW IT WORKS</div>
-          <h2 className="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Just 3 Steps to Get Started</h2>
+          <h2 className={`text-5xl font-extrabold ${theme === 'light' ? 'text-gray-900' : 'text-white'} mb-4 leading-tight`}>Just 3 Steps to Get Started</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Steps */}
@@ -42,8 +42,8 @@ export default function GetStartedSection() {
                   )}
                 </div>
                 <div>
-                  <div className="font-extrabold text-lg text-gray-900 mb-1">{idx + 1}. {step.title}</div>
-                  <div className="text-gray-600 text-base max-w-md">{step.desc}</div>
+                  <div className={`font-extrabold text-lg ${theme === 'light' ? 'text-gray-900' : 'text-white'}  mb-1`}>{idx + 1}. {step.title}</div>
+                  <div className={`${theme === 'light' ? 'text-gray-600' : 'text-white'} text-base max-w-md`}>{step.desc}</div>
                 </div>
               </div>
             ))}

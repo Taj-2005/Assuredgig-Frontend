@@ -42,7 +42,7 @@ export default function HomePage() {
           <div
             className={
               theme === "light"
-                ? "rounded-2xl shadow-xl p-8 w-full max-w-2xl bg-white text-black"
+                ? "rounded-2xl p-8 w-full max-w-2xl bg-white text-black"
                 : "text-white rounded-2xl shadow-xl p-8 w-full max-w-2xl bg-transparent"
             }
           >

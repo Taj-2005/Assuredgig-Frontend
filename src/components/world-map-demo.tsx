@@ -2,8 +2,9 @@
 
 import { motion } from "motion/react";
 import WorldMap from "./ui/world-map";
-
+import { useTheme } from "@/context/ThemeContext";
 export default function WorldMapDemo() {
+  const { theme } = useTheme();
   return (
     <div className="w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,8 +30,8 @@ export default function WorldMapDemo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8"
-        >
+          className="mt-8"        
+          >
           <WorldMap
             dots={[
               {
@@ -51,6 +52,7 @@ export default function WorldMapDemo() {
               },
             ]}
             lineColor="#0ea5e9"
+            dotColor={theme === "dark" ? "#ffffff" : "#000000"}
           />
         </motion.div>
       </div>
