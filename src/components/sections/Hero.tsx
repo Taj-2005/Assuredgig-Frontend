@@ -41,7 +41,7 @@ export default function Hero() {
             ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight mt-36"
             : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight mt-36"}
           >
-            The Future of <span className="text-cyan-400">Freelancing</span>
+            The Future of <span className={theme === 'dark' ? 'text-cyan-400' : 'text-cyan-500'}>Freelancing</span>
           </h1>
           <p className={theme === "light"
             ? "text-lg sm:text-xl md:text-2xl text-gray-500 mb-8 max-w-3xl mx-auto"

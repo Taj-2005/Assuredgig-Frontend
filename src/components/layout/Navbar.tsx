@@ -42,7 +42,7 @@ export default function Navbar() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         theme === 'light'
           ? isScrolled
-            ? 'bg-white shadow-md backdrop-blur-lg'
+            ? 'bg-white border border-b-2 border-b-sky-400 backdrop-blur-lg'
             : 'bg-white'
           : isScrolled
             ? 'bg-black/80 backdrop-blur-lg'

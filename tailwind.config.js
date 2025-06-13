@@ -110,7 +110,8 @@ module.exports = {
   			'fade-in': 'fade-in 0.8s ease-out',
   			'gradient-x': 'gradient-x 15s ease infinite',
   			'gradient-y': 'gradient-y 15s ease infinite',
-  			'gradient-xy': 'gradient-xy 15s ease infinite'
+  			'gradient-xy': 'gradient-xy 15s ease infinite',
+			'shine' : 'shine 3s linear infinite'
   		},
   		keyframes: {
   			float: {
@@ -176,7 +177,16 @@ module.exports = {
   					'background-size': '200% 200%',
   					'background-position': 'right center'
   				}
-  			}
+  			},
+			'shine' : {
+				'0%' : {
+					backgroundPosition : '200% 0%'
+				},
+				'100%' : {
+					backgroundPosition: '-200% 0%'
+				}
+			}
+
   		},
   		backdropBlur: {
   			xs: '2px'
