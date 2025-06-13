@@ -90,7 +90,7 @@ export const BentoCard = ({
         {href && cta && (
           <a
             href={href}
-            className="mt-auto inline-flex items-center gap-1 text-sm font-semibold  hover:text-black transition-colors"
+            className={`mt-auto inline-flex items-center gap-1 text-sm font-semibold  hover:text-black transition-colors ${theme === 'light' ? 'text-black' : 'text-white'}`}
           >
             {cta} <span aria-hidden>→</span>
           </a>
