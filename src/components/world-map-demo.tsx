@@ -2,9 +2,7 @@
 
 import { motion } from "motion/react";
 import WorldMap from "./ui/world-map";
-import { useTheme } from "@/context/ThemeContext";
 export default function WorldMapDemo() {
-  const { theme } = useTheme();
   return (
     <div className="w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,7 +50,6 @@ export default function WorldMapDemo() {
               },
             ]}
             lineColor="#0ea5e9"
-            dotColor={theme === "dark" ? "#ffffff" : "#000000"}
           />
         </motion.div>
       </div>

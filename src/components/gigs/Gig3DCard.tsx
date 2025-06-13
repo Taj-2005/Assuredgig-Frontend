@@ -43,7 +43,7 @@ export function Gig3DCard({
           <div>
             <CardItem
               translateZ="50"
-              className="text-xl font-bold text-white mb-1"
+              className="text-xl font-bold text-cyan-400 mb-1"
             >
               {title}
             </CardItem>
@@ -58,7 +58,7 @@ export function Gig3DCard({
             )}
           </div>
           {typeof rating === 'number' && (
-            <div className="flex items-center text-indigo-400">
+            <div className="flex items-center text-cyan-400">
               <Star className="w-4 h-4 fill-current mr-1" />
               <span className="text-sm font-medium">{rating}</span>
             </div>
