@@ -38,8 +38,8 @@ export default function Hero() {
       <div className="flex flex-1 items-center justify-center w-full pt-24 pb-12">
         <main className="w-full max-w-7xl px-4 flex flex-col items-center justify-center text-center">
           <h1 className={theme === "light"
-            ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
-            : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"}
+            ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight mt-36"
+            : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight mt-36"}
           >
             The Future of <span className="text-cyan-400">Freelancing</span>
           </h1>
