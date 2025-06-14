@@ -55,10 +55,10 @@ export default function Navbar() {
 
   return (
     <nav className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
+      "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
       isScrolled
         ? theme === 'light'
-          ? "bg-white/90 backdrop-blur-md shadow-sm"
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-sky-400"
           : "bg-black/90 backdrop-blur-md shadow-sm"
         : "bg-transparent"
     )}>
