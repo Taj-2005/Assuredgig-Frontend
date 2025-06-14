@@ -115,73 +115,66 @@
 }
 
 @layer components {
-  /* Linear-style buttons */
+  /* Enhanced button styles */
   .btn-primary {
-    @apply relative bg-primary text-white font-medium px-6 py-3 rounded-lg
-           transition-all duration-200 hover:bg-primary/90 
-           focus:ring-2 focus:ring-primary/50 focus:outline-none;
+    @apply relative bg-gradient-to-r from-cyan-400 to-cyan-500 text-white font-medium px-6 py-3 rounded-lg
+           transition-all duration-200 hover:from-cyan-500 hover:to-cyan-600 
+           focus:ring-2 focus:ring-cyan-500/50 focus:outline-none shadow-lg hover:shadow-xl;
   }
   
   .btn-secondary {
     @apply border border-border text-white font-medium px-6 py-3 rounded-lg
-           bg-transparent hover:bg-surface transition-all duration-200
+           bg-transparent hover:bg-white/5 transition-all duration-200
            focus:ring-2 focus:ring-border focus:outline-none;
   }
   
-  /* Linear-style cards */
+  /* Enhanced card styles */
   .card {
-    @apply bg-[#161b22] border border-[#30363d] rounded-lg p-4 transition-all duration-150 ease-in-out;
+    @apply bg-gradient-to-b from-[#161b22] to-[#1a1f2a] border border-[#30363d] rounded-lg p-4 
+           transition-all duration-150 ease-in-out hover:border-cyan-500/50 hover:shadow-lg;
   }
   
-  /* Glass morphism for Linear feel */
+  /* Enhanced glass morphism */
   .glass {
-    @apply bg-surface/50 backdrop-blur-xl border border-border/50 rounded-xl;
+    @apply bg-surface/50 backdrop-blur-xl border border-border/50 rounded-xl
+           shadow-lg hover:shadow-xl transition-all duration-200;
   }
   
-  /* Hero text styles */
-  .hero-title {
-    @apply text-6xl md:text-8xl font-black tracking-tight
-           bg-gradient-to-br from-white to-text-secondary bg-clip-text text-transparent;
-  }
-  
-  .hero-subtitle {
-    @apply text-xl md:text-2xl font-medium text-text-secondary max-w-2xl;
-  }
-  
-  /* Input fields Linear style */
+  /* Enhanced input fields */
   .input {
-    @apply bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[#f0f6fc] text-sm transition-all duration-150 ease-in-out;
+    @apply bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 text-[#f0f6fc] text-sm 
+           transition-all duration-150 ease-in-out focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50;
   }
   
-  /* Navigation */
+  /* Enhanced navigation */
   .nav-link {
-    @apply text-text-secondary hover:text-white font-medium
-           transition-colors duration-200;
+    @apply text-text-secondary hover:text-white font-medium px-3 py-2 rounded-md
+           transition-all duration-200 hover:bg-white/5;
   }
   
-  /* Stats/metrics */
-  .metric-card {
-    @apply text-center p-6;
+  /* Enhanced status badges */
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium 
+           uppercase tracking-wider transition-all duration-200;
   }
   
-  .metric-value {
-    @apply text-4xl md:text-5xl font-black text-white;
+  .status-active {
+    @apply bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20;
   }
   
-  .metric-label {
-    @apply text-text-secondary font-medium mt-2;
+  .status-pending {
+    @apply bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20;
   }
   
-  /* Workflow cards */
-  .workflow-card {
-    @apply bg-surface border border-border rounded-xl p-8
-           hover:border-primary/50 transition-all duration-300 group;
+  .status-completed {
+    @apply bg-green-500/10 text-green-400 hover:bg-green-500/20;
   }
   
-  .workflow-icon {
-    @apply w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center
-           text-primary group-hover:bg-primary group-hover:text-white
-           transition-all duration-300;
+  /* Enhanced project cards */
+  .project-card {
+    @apply flex flex-col gap-3 p-4 bg-gradient-to-b from-[#161b22] to-[#1a1f2a] 
+           border border-[#30363d] rounded-lg cursor-pointer 
+           transition-all duration-200 hover:border-cyan-500/50 hover:shadow-lg;
   }
 
   .nav-item {
@@ -202,30 +195,6 @@
 
   .button-primary:hover {
     @apply bg-[#2ea043];
-  }
-
-  .status-badge {
-    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider;
-  }
-
-  .status-active {
-    @apply bg-[#2da44e]/10 text-[#2da44e];
-  }
-
-  .status-pending {
-    @apply bg-[#fd7e14]/10 text-[#fd7e14];
-  }
-
-  .status-completed {
-    @apply bg-[#238636]/10 text-[#238636];
-  }
-
-  .project-card {
-    @apply flex flex-col gap-3 p-4 bg-[#161b22] border border-[#30363d] rounded-lg cursor-pointer transition-all duration-150 ease-in-out;
-  }
-
-  .project-card:hover {
-    @apply transform scale-[1.02] border-[#21262d];
   }
 
   .project-header {

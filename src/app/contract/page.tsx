@@ -40,6 +40,7 @@ const contractDetails = {
 };
 
 const CountdownTimer = ({ date }: { date: Date }) => {
+  const { theme } = useTheme();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -122,6 +123,7 @@ const CountdownTimer = ({ date }: { date: Date }) => {
 };
 
 const ProgressTimeline = ({ milestones }: { milestones: typeof contractDetails.milestones }) => {
+  const { theme } = useTheme();
   return (
     <div className="relative">
       <div className={`absolute left-4 top-0 bottom-0 w-0.5 ${theme === 'light' ? 'bg-black' : 'bg-blue-700'}`} />

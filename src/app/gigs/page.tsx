@@ -94,7 +94,7 @@ export default function GigsPage() {
     <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
       <Button
         variant="secondary"
-        className={theme === 'light' ? 'border-cyan-300 text-white hover:bg-cyan-500 w-40 fixed top-2 left-3 z-10' : 'border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e] w-40 fixed top-2 left-3 z-10'}
+        className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105'}
         onClick={(e) => {
           e.preventDefault();
           navigate.push('/')
@@ -106,8 +106,6 @@ export default function GigsPage() {
         {/* Background Effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div className={theme === 'light' ? 'w-full h-full bg-white' : 'w-full h-full bg-black'} />
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-30" />
-          <div className={theme === 'light' ? 'absolute inset-0 bg-gradient-to-b from-cyan-100/90 via-cyan-100/80 to-cyan-100/60' : 'absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60'} />
         </div>
         <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-16">
           <motion.div
@@ -120,15 +118,12 @@ export default function GigsPage() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 mb-8"
+              className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-black mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black border border-white mb-8'}
             >
-              <Sparkles className="w-8 h-8 text-cyan-600" />
+              <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-white'} />
             </motion.div>
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-500'}  mb-6`}>
-              Find Your Next
-              <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent"> Freelance Opportunity</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Find Your Next <span className="text-black dark:text-white">Freelance Opportunity</span></h1>
+            <p className={theme === 'light' ? 'text-lg sm:text-xl text-black max-w-2xl mx-auto mb-8' : 'text-lg sm:text-xl text-white max-w-2xl mx-auto mb-8'}>
               Browse through our curated list of high-quality gigs and find the perfect match for your skills.
             </p>
           </motion.div>
@@ -141,16 +136,16 @@ export default function GigsPage() {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <Search className={theme === 'light' ? 'absolute left-3 top-1/2 transform -translate-y-1/2 text-black' : 'absolute left-3 top-1/2 transform -translate-y-1/2 text-white'} />
                 <Input
                   placeholder="Search gigs..."
-                  className={`pl-10 ${ theme === 'light' ? 'bg-cyan-100 border-2 border-cyan-600' : 'bg-[#161b22] border-[#23272e]'} text-[#f0f6fc] placeholder:text-gray-400 focus:ring-2 focus:ring-cyan-400`}
+                  className={`pl-10 ${ theme === 'light' ? 'bg-white border-2 border-black text-black' : 'bg-black border-2 border-white text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
                 />
               </div>
             </div>
             <div className="flex gap-4">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="w-[200px] bg-[#161b22] border-[#23272e] text-[#f0f6fc] focus:ring-2 focus:ring-indigo-500">
+                <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-black text-black focus:ring-2 focus:ring-black' : 'w-[200px] bg-black border-white text-white focus:ring-2 focus:ring-white'}>
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
@@ -161,7 +156,7 @@ export default function GigsPage() {
                   ))}
                 </SelectContent>
               </Select>
-              <Button variant="secondary" className="border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e]">
+              <Button variant="secondary" className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
                 <Filter className="w-4 h-4 mr-2" />
                 Filters
               </Button>
@@ -174,13 +169,18 @@ export default function GigsPage() {
                 <button
                   key={tag}
                   onClick={() => toggleTag(tag)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-150
+                  className={`px-3 py-1 rounded-full text-sm font-medium border transition-all duration-150
                     ${selectedTags.includes(tag)
-                      ? 'bg-gradient-to-r from-cyan-200 to-cyan-500 text-white shadow-md scale-105 mx-4 my-2'
-                      : 'bg-cyan-200 text-black hover:bg-[#23272e] hover:text-[#f0f6fc] mx-4 my-2'}
+                      ? theme === 'light'
+                        ? 'bg-black text-white border-black scale-105 font-bold'
+                        : 'bg-white text-black border-white scale-105 font-bold'
+                      : theme === 'light'
+                        ? 'bg-white text-black border-black hover:bg-black hover:text-white hover:scale-105'
+                        : 'bg-black text-white border-white hover:bg-white hover:text-black hover:scale-105'
+                    }
                   `}
                 >
-                  <Tag className="w-3 h-3 inline mr-1" />
+                  <Tag className={theme === 'light' ? 'w-3 h-3 inline mr-1 text-black' : 'w-3 h-3 inline mr-1 text-white'} />
                   {tag}
                 </button>
               ))}
@@ -200,53 +200,29 @@ export default function GigsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`${theme === 'dark' ? 'bg-[#161b22]' : 'bg-cyan-200 border-2 border-cyan-400'} border border-[#23272e] rounded-2xl overflow-hidden shadow-lg transition-all duration-150`}
+                className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}
               >
-                <div className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-[#f0f6fc]' : 'text-black'}`}>{gig.title}</h3>
-                      <p className={`${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>{gig.company}</p>
-                    </div>
-                    <div className="flex items-center text-cyan-500">
-                      <span className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>{gig.rating}</span>
-                      <span className="ml-1">★</span>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-gray-400">{gig.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {gig.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-[#23272e] text-gray-300 rounded-md text-sm border border-[#23272e]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex items-center justify-between text-sm text-gray-400">
-                    <div className="flex items-center">
-                      <MapPin className="w-4 h-4 mr-1" />
-                      {gig.location}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {gig.posted}
-                    </div>
-                    <div className="flex items-center">
-                      <DollarSign className="w-4 h-4 mr-1" />
-                      {gig.salary}
-                    </div>
-                  </div>
-                  <div className="mt-6 flex gap-4">
-                    <Button className="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white hover:opacity-90 shadow-md">
-                      Apply Now
-                    </Button>
-                    <Button variant="secondary" className="flex-1 border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e]">
-                      View Details
-                    </Button>
-                  </div>
+                <div className="overflow-hidden rounded-xl mb-4 border border-black dark:border-white">
+                  <img src={gig.image} alt={gig.title} className="w-full h-40 object-cover transition-transform duration-300 hover:scale-110" />
                 </div>
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className={theme === 'light' ? 'text-xl font-bold text-black' : 'text-xl font-bold text-white'}>{gig.title}</h2>
+                  <span className={theme === 'light' ? 'text-sm font-semibold text-black' : 'text-sm font-semibold text-white'}>{gig.salary}</span>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}><MapPin className="inline w-4 h-4 mr-1" />{gig.location}</span>
+                  <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}><Clock className="inline w-4 h-4 mr-1" />{gig.type}</span>
+                  <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}>Posted: {gig.posted}</span>
+                </div>
+                <p className={theme === 'light' ? 'text-black' : 'text-white'}>{gig.description}</p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {gig.tags.map((tag) => (
+                    <span key={tag} className={theme === 'light' ? 'px-2 py-1 rounded-full text-xs font-medium bg-black text-white transition-transform duration-150 hover:scale-110' : 'px-2 py-1 rounded-full text-xs font-medium bg-white text-black transition-transform duration-150 hover:scale-110'}>{tag}</span>
+                  ))}
+                </div>
+                <Button className={theme === 'light' ? 'mt-4 bg-black text-white w-full transition-transform duration-200 hover:scale-105 hover:shadow-lg' : 'mt-4 bg-white text-black w-full transition-transform duration-200 hover:scale-105 hover:shadow-lg'}>
+                  View Details
+                </Button>
               </motion.div>
             ))}
           </div>
@@ -258,7 +234,7 @@ export default function GigsPage() {
         <div className="max-w-7xl mx-auto text-center">
           <Button
             variant="secondary"
-            className="border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e]"
+            className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
           >
             Load More Gigs
           </Button>
