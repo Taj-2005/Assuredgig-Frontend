@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import {useRouter} from 'next/navigation'
+import { useTheme } from '@/context/ThemeContext';
+
 const faqs = [
   {
     question: 'How do I get started as a freelancer?',
@@ -25,23 +27,24 @@ const faqs = [
 
 export default function ContactPage() {
   const navigate = useRouter()
+  const { theme } = useTheme();
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col">
+    <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
       <Button
-                variant="secondary"
-                className="border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e] w-40 fixed top-2 left-3 z-10"
-                onClick = {(e) => {
-                  e.preventDefault();
-                  navigate.push('/')
-                }}
-              >
-                Back To Home
-            </Button>
+        variant="secondary"
+        className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10' : 'border-white text-white hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10'}
+        onClick = {(e) => {
+          e.preventDefault();
+          navigate.push('/')
+        }}
+      >
+        Back To Home
+      </Button>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] bg-black">
+      <section className={theme === 'light' ? 'relative min-h-[60vh] bg-white' : 'relative min-h-[60vh] bg-black'}>
         {/* Background Effects */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black/40"></div>
+        <div className={theme === 'light' ? 'absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white/40' : 'absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black/40'}></div>
         
         <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-16">
           <motion.div
@@ -54,17 +57,17 @@ export default function ContactPage() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 mb-8"
+              className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/10 border border-black/20 mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-8'}
             >
-              <Sparkles className="w-8 h-8 text-indigo-400" />
+              <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-blue-400'} />
             </motion.div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className={theme === 'light' ? 'text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6' : 'text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6'}>
               Get in
-              <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent"> Touch</span>
+              <span className={theme === 'light' ? 'bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent' : 'bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent'}> Touch</span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+            <p className={theme === 'light' ? 'text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto mb-8' : 'text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8'}>
               Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
             </p>
           </motion.div>
@@ -72,7 +75,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 px-6 bg-black">
+      <section className={theme === 'light' ? 'py-16 px-6 bg-white' : 'py-16 px-6 bg-black'}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -81,43 +84,43 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-[#161b22] border border-[#30363d] rounded-lg p-8"
+              className={theme === 'light' ? 'bg-white border border-black rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}
             >
-              <h2 className="text-2xl font-semibold text-white mb-6">Send us a Message</h2>
+              <h2 className={theme === 'light' ? 'text-2xl font-semibold text-black mb-6' : 'text-2xl font-semibold text-white mb-6'}>Send us a Message</h2>
               <form className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
+                  <label htmlFor="name" className={theme === 'light' ? 'block text-sm font-medium text-gray-700 mb-2' : 'block text-sm font-medium text-gray-400 mb-2'}>
                     Your Name
                   </label>
                   <Input
                     id="name"
                     type="text"
                     placeholder="John Doe"
-                    className="bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400"
+                    className={theme === 'light' ? 'bg-white border-black text-black placeholder:text-gray-400' : 'bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                  <label htmlFor="email" className={theme === 'light' ? 'block text-sm font-medium text-gray-700 mb-2' : 'block text-sm font-medium text-gray-400 mb-2'}>
                     Email Address
                   </label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="john@example.com"
-                    className="bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400"
+                    className={theme === 'light' ? 'bg-white border-black text-black placeholder:text-gray-400' : 'bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
+                  <label htmlFor="message" className={theme === 'light' ? 'block text-sm font-medium text-gray-700 mb-2' : 'block text-sm font-medium text-gray-400 mb-2'}>
                     Message
                   </label>
                   <Textarea
                     id="message"
                     placeholder="Your message here..."
-                    className="min-h-[150px] bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400"
+                    className={theme === 'light' ? 'min-h-[150px] bg-white border-black text-black placeholder:text-gray-400' : 'min-h-[150px] bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
                   />
                 </div>
-                <Button className="w-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:opacity-90">
+                <Button className={theme === 'light' ? 'w-full bg-black text-white hover:bg-gray-900' : 'w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:opacity-90'}>
                   <Send className="w-4 h-4 mr-2" />
                   Send Message
                 </Button>
@@ -132,40 +135,40 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-[#161b22] border border-[#30363d] rounded-lg p-8">
-                <h2 className="text-2xl font-semibold text-white mb-6">Contact Information</h2>
+              <div className={theme === 'light' ? 'bg-white border border-black rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}>
+                <h2 className={theme === 'light' ? 'text-2xl font-semibold text-black mb-6' : 'text-2xl font-semibold text-white mb-6'}>Contact Information</h2>
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                        <Mail className="w-6 h-6 text-indigo-400" />
+                      <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
+                        <Mail className={theme === 'light' ? 'w-6 h-6 text-black' : 'w-6 h-6 text-blue-400'} />
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-medium text-white">Email</h3>
-                      <p className="mt-1 text-gray-400">support@assuredgig.com</p>
+                      <h3 className={theme === 'light' ? 'text-lg font-medium text-black' : 'text-lg font-medium text-white'}>Email</h3>
+                      <p className={theme === 'light' ? 'mt-1 text-gray-700' : 'mt-1 text-gray-400'}>support@assuredgig.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                        <Phone className="w-6 h-6 text-indigo-400" />
+                      <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
+                        <Phone className={theme === 'light' ? 'w-6 h-6 text-black' : 'w-6 h-6 text-blue-400'} />
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-medium text-white">Phone</h3>
-                      <p className="mt-1 text-gray-400">+1 (555) 123-4567</p>
+                      <h3 className={theme === 'light' ? 'text-lg font-medium text-black' : 'text-lg font-medium text-white'}>Phone</h3>
+                      <p className={theme === 'light' ? 'mt-1 text-gray-700' : 'mt-1 text-gray-400'}>+1 (555) 123-4567</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                        <MapPin className="w-6 h-6 text-indigo-400" />
+                      <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
+                        <MapPin className={theme === 'light' ? 'w-6 h-6 text-black' : 'w-6 h-6 text-blue-400'} />
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-medium text-white">Location</h3>
-                      <p className="mt-1 text-gray-400">
+                      <h3 className={theme === 'light' ? 'text-lg font-medium text-black' : 'text-lg font-medium text-white'}>Location</h3>
+                      <p className={theme === 'light' ? 'mt-1 text-gray-700' : 'mt-1 text-gray-400'}>
                         123 Innovation Street<br />
                         San Francisco, CA 94107
                       </p>
@@ -175,20 +178,20 @@ export default function ContactPage() {
               </div>
 
               {/* Business Hours */}
-              <div className="bg-[#161b22] border border-[#30363d] rounded-lg p-8">
-                <h2 className="text-2xl font-semibold text-white mb-6">Business Hours</h2>
+              <div className={theme === 'light' ? 'bg-white border border-black rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}>
+                <h2 className={theme === 'light' ? 'text-2xl font-semibold text-black mb-6' : 'text-2xl font-semibold text-white mb-6'}>Business Hours</h2>
                 <div className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Monday - Friday</span>
-                    <span className="text-white">9:00 AM - 6:00 PM</span>
+                    <span className={theme === 'light' ? 'text-gray-700' : 'text-gray-400'}>Monday - Friday</span>
+                    <span className={theme === 'light' ? 'text-black' : 'text-white'}>9:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Saturday</span>
-                    <span className="text-white">10:00 AM - 4:00 PM</span>
+                    <span className={theme === 'light' ? 'text-gray-700' : 'text-gray-400'}>Saturday</span>
+                    <span className={theme === 'light' ? 'text-black' : 'text-white'}>10:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Sunday</span>
-                    <span className="text-white">Closed</span>
+                    <span className={theme === 'light' ? 'text-gray-700' : 'text-gray-400'}>Sunday</span>
+                    <span className={theme === 'light' ? 'text-black' : 'text-white'}>Closed</span>
                   </div>
                 </div>
               </div>
@@ -198,7 +201,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6">
+      <section className={theme === 'light' ? 'py-20 px-6 bg-white' : 'py-20 px-6 bg-black'}>
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -207,10 +210,10 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            <h2 className={theme === 'light' ? 'text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent' : 'text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent'}>
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className={theme === 'light' ? 'text-xl text-gray-700 max-w-3xl mx-auto' : 'text-xl text-gray-400 max-w-3xl mx-auto'}>
               Find answers to common questions about our platform
             </p>
           </motion.div>
@@ -224,13 +227,13 @@ export default function ContactPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="bg-white/5 border-white/10">
+                <Card className={theme === 'light' ? 'bg-black/5 border-black/10' : 'bg-white/5 border-white/10'}>
                   <CardContent className="p-6">
                     <div className="flex items-start">
-                      <MessageSquare className="w-6 h-6 text-white mr-4 mt-1" />
+                      <MessageSquare className={theme === 'light' ? 'w-6 h-6 text-black mr-4 mt-1' : 'w-6 h-6 text-white mr-4 mt-1'} />
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">{faq.question}</h3>
-                        <p className="text-gray-400">{faq.answer}</p>
+                        <h3 className={theme === 'light' ? 'text-xl font-semibold text-black mb-2' : 'text-xl font-semibold text-white mb-2'}>{faq.question}</h3>
+                        <p className={theme === 'light' ? 'text-gray-700' : 'text-gray-400'}>{faq.answer}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -242,7 +245,7 @@ export default function ContactPage() {
       </section>
 
       {/* Support Section */}
-      <section className="py-20 px-6 bg-[#111111]">
+      <section className={theme === 'light' ? 'py-20 px-6 bg-white' : 'py-20 px-6 bg-[#111111]'}>
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -251,14 +254,14 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Headphones className="w-12 h-12 text-white mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            <Headphones className={theme === 'light' ? 'w-12 h-12 text-black mx-auto mb-6' : 'w-12 h-12 text-white mx-auto mb-6'} />
+            <h2 className={theme === 'light' ? 'text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent' : 'text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent'}>
               Need Immediate Support?
             </h2>
-            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+            <p className={theme === 'light' ? 'text-xl text-gray-700 mb-8 max-w-3xl mx-auto' : 'text-xl text-gray-400 mb-8 max-w-3xl mx-auto'}>
               Our support team is available 24/7 to help you with any questions or concerns.
             </p>
-            <Button className="bg-white text-black hover:bg-gray-200">
+            <Button className={theme === 'light' ? 'bg-black text-white hover:bg-gray-900' : 'bg-white text-black hover:bg-gray-200'}>
               Start Live Chat
             </Button>
           </motion.div>
@@ -266,11 +269,11 @@ export default function ContactPage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-black border-t border-indigo-900/60 py-10 mt-auto">
+      <footer className={theme === 'light' ? 'w-full bg-white border-t border-black/60 py-10 mt-auto' : 'w-full bg-black border-t border-blue-900/60 py-10 mt-auto'}>
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent mb-2">Assured Gig</span>
-          <span className="text-sm text-gray-500 mb-2">Empowering Freelancers & Clients</span>
-          <span className="text-xs text-gray-600">&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
+          <span className={theme === 'light' ? 'text-xl font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent mb-2' : 'text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-2'}>Assured Gig</span>
+          <span className={theme === 'light' ? 'text-sm text-gray-700 mb-2' : 'text-sm text-gray-500 mb-2'}>Empowering Freelancers & Clients</span>
+          <span className={theme === 'light' ? 'text-xs text-gray-500' : 'text-xs text-gray-600'}>&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
         </div>
       </footer>
     </div>
