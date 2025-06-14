@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Hero from "@/components/sections/Hero";
 import BentoDemo from "@/components/bento-grid-demo";
 import TypewriterEffectSmoothDemo from "@/components/ui/typewriter-effect-demo-1";
@@ -11,6 +12,16 @@ import { useTheme } from "@/context/ThemeContext";
 
 export default function HomePage() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // or a loading skeleton
+  }
+
   return (
     <main
       className={
