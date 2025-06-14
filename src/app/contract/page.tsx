@@ -176,21 +176,21 @@ export default function ContractsPage() {
         <div className="max-w-7xl mx-auto grid gap-8">
           {/* Contracts List */}
           <div className="md:col-span-2 flex-col gap-8 grid">
-            <div className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}>
+            <div className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 transition-transform duration-700 hover:scale-100 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}>
               <h3 className={theme === 'light' ? 'text-lg font-semibold text-black mb-4 flex items-center gap-2' : 'text-lg font-semibold text-white mb-4 flex items-center gap-2'}>
                 <Target className={theme === 'light' ? 'w-5 h-5 text-black' : 'w-5 h-5 text-white'} />
                 Active Contracts
               </h3>
               <div className="space-y-3">
                 {contracts.map((contract) => (
-                  <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-black bg-white hover:bg-black hover:text-white transition-all duration-300 cursor-pointer transition-transform hover:scale-105 hover:shadow-lg' : 'block w-full text-left p-4 rounded-xl border border-white bg-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer transition-transform hover:scale-105 hover:shadow-lg'}>
+                  <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-black bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer transition-transform hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-white bg-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer transition-transform hover:scale-105 hover:shadow-lg text-white'}>
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className={theme === 'light' ? 'font-medium text-sm text-black' : 'font-medium text-sm text-white'}>{contract.title}</h4>
-                        <p className={theme === 'light' ? 'text-xs text-black mt-1' : 'text-xs text-white mt-1'}>{contract.client}</p>
+                        <h4>{contract.title}</h4>
+                        <p>{contract.client}</p>
                       </div>
                       <div className="text-right">
-                        <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-black text-white' : 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black'}>
+                        <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black' : 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black'}>
                           {contract.progress}%
                         </div>
                       </div>
@@ -307,7 +307,7 @@ export default function ContractsPage() {
             </div>
           </div>
           <div className = 'flex justify-end items-end'>
-            <Button variant="secondary" className="border-black text-white dark:text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105 hover:shadow-md"
+            <Button variant="secondary" className="border-black text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105 hover:shadow-md"
             onClick = {(e) => {
               e.preventDefault()
               navigate.push('/')
