@@ -102,19 +102,19 @@ const CountdownTimer = ({ date }: { date: Date }) => {
       className="flex gap-4"
     >
       <div className="flex flex-col items-center">
-        <div className="text-2xl font-bold text-indigo-400">{timeLeft.days}</div>
+        <div className={`text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-blue-400'}`}>{timeLeft.days}</div>
         <div className="text-sm text-gray-400">Days</div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="text-2xl font-bold text-indigo-400">{timeLeft.hours}</div>
+        <div className={`text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-blue-400'}`}>{timeLeft.hours}</div>
         <div className="text-sm text-gray-400">Hours</div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="text-2xl font-bold text-indigo-400">{timeLeft.minutes}</div>
+        <div className={`text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-blue-400'}`}>{timeLeft.minutes}</div>
         <div className="text-sm text-gray-400">Mins</div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="text-2xl font-bold text-indigo-400">{timeLeft.seconds}</div>
+        <div className={`text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-blue-400'}`}>{timeLeft.seconds}</div>
         <div className="text-sm text-gray-400">Secs</div>
       </div>
     </motion.div>
@@ -124,7 +124,7 @@ const CountdownTimer = ({ date }: { date: Date }) => {
 const ProgressTimeline = ({ milestones }: { milestones: typeof contractDetails.milestones }) => {
   return (
     <div className="relative">
-      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700" />
+      <div className={`absolute left-4 top-0 bottom-0 w-0.5 ${theme === 'light' ? 'bg-black' : 'bg-blue-700'}`} />
       {milestones.map((milestone, idx) => (
         <motion.div
           key={idx}
@@ -133,19 +133,17 @@ const ProgressTimeline = ({ milestones }: { milestones: typeof contractDetails.m
           transition={{ delay: idx * 0.1 }}
           className="relative flex items-start mb-8 last:mb-0"
         >
-          <div className={`absolute left-0 w-8 h-8 rounded-full flex items-center justify-center ${
-            milestone.complete ? 'bg-cyan-400' : 'bg-gray-700'
-          }`}>
+          <div className={`absolute left-0 w-8 h-8 rounded-full flex items-center justify-center ${milestone.complete ? (theme === 'light' ? 'bg-black' : 'bg-blue-500') : (theme === 'light' ? 'bg-white border border-black' : 'bg-blue-900')}`}> 
             {milestone.complete ? (
               <CheckCircle2 className="w-5 h-5 text-white" />
             ) : (
-              <div className="w-3 h-3 rounded-full bg-gray-400" />
+              <div className={`w-3 h-3 rounded-full ${theme === 'light' ? 'bg-black' : 'bg-blue-400'}`} />
             )}
           </div>
           <div className="ml-12">
-            <div className="text-white font-medium">{milestone.name}</div>
+            <div className={`${theme === 'light' ? 'text-black' : 'text-blue-100'} font-medium`}>{milestone.name}</div>
             <div className="text-gray-400 text-sm">{milestone.date}</div>
-            <div className="text-cyan-300 font-semibold">${milestone.value}</div>
+            <div className={`${theme === 'light' ? 'text-black' : 'text-blue-300'} font-semibold`}>${milestone.value}</div>
           </div>
         </motion.div>
       ))}
@@ -159,15 +157,15 @@ export default function ContractsPage() {
   const { theme } = useTheme();
   return (
     <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
-      <section className={theme === 'light' ? 'w-full border-b border-cyan-200 py-10 bg-white' : 'w-full border-b border-[#23272e] py-10 bg-black'}>
+      <section className={theme === 'light' ? 'w-full border-b border-black py-10 bg-white' : 'w-full border-b border-white py-10 bg-black'}>
         <div className="max-w-7xl mx-auto px-6 flex md:items-center md:justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className={theme === 'light' ? 'w-14 h-14 bg-cyan-100 border border-cyan-200 rounded-2xl flex items-center justify-center' : 'w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl flex items-center justify-center'}>
-              <Target className={theme === 'light' ? 'w-7 h-7 text-cyan-400' : 'w-7 h-7 text-cyan-400'} />
+            <div className={theme === 'light' ? 'w-14 h-14 bg-white border border-black rounded-2xl flex items-center justify-center' : 'w-14 h-14 bg-black border border-white rounded-2xl flex items-center justify-center'}>
+              <Target className={theme === 'light' ? 'w-7 h-7 text-black' : 'w-7 h-7 text-white'} />
             </div>
             <div>
-              <h1 className={theme === 'light' ? 'text-3xl md:text-4xl font-bold text-cyan-700 mb-1' : 'text-3xl md:text-4xl font-bold text-white mb-1'}>Contracts</h1>
-              <p className={theme === 'light' ? 'text-gray-500 text-base' : 'text-gray-400 text-base'}>All your contracts</p>
+              <h1 className={theme === 'light' ? 'text-3xl md:text-4xl font-bold text-black mb-1' : 'text-3xl md:text-4xl font-bold text-white mb-1'}>Contracts</h1>
+              <p className={theme === 'light' ? 'text-black text-base' : 'text-white text-base'}>All your contracts</p>
             </div>
           </div>
         </div>
@@ -176,21 +174,21 @@ export default function ContractsPage() {
         <div className="max-w-7xl mx-auto grid gap-8">
           {/* Contracts List */}
           <div className="md:col-span-2 flex-col gap-8 grid">
-            <div className={theme === 'light' ? 'bg-cyan-50 border border-cyan-200 rounded-2xl shadow-lg p-6' : 'bg-[#161b22] border border-[#23272e] rounded-2xl shadow-lg p-6'}>
-              <h3 className={theme === 'light' ? 'text-lg font-semibold text-cyan-700 mb-4 flex items-center gap-2' : 'text-lg font-semibold text-white mb-4 flex items-center gap-2'}>
-                <Target className={theme === 'light' ? 'w-5 h-5 text-cyan-400' : 'w-5 h-5 text-cyan-400'} />
+            <div className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}>
+              <h3 className={theme === 'light' ? 'text-lg font-semibold text-black mb-4 flex items-center gap-2' : 'text-lg font-semibold text-white mb-4 flex items-center gap-2'}>
+                <Target className={theme === 'light' ? 'w-5 h-5 text-black' : 'w-5 h-5 text-white'} />
                 Active Contracts
               </h3>
               <div className="space-y-3">
                 {contracts.map((contract) => (
-                  <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl transition-all duration-300 border bg-cyan-100 hover:bg-cyan-200 border-cyan-200 cursor-pointer' : 'block w-full text-left p-4 rounded-xl transition-all duration-300 border bg-[#23272e] hover:bg-[#23272e]/80 border-[#23272e] cursor-pointer'}>
+                  <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-black bg-white hover:bg-black hover:text-white transition-all duration-300 cursor-pointer transition-transform hover:scale-105 hover:shadow-lg' : 'block w-full text-left p-4 rounded-xl border border-white bg-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer transition-transform hover:scale-105 hover:shadow-lg'}>
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className={theme === 'light' ? 'font-medium text-sm text-cyan-700' : 'font-medium text-sm text-white'}>{contract.title}</h4>
-                        <p className={theme === 'light' ? 'text-xs text-gray-500 mt-1' : 'text-xs text-gray-400 mt-1'}>{contract.client}</p>
+                        <h4 className={theme === 'light' ? 'font-medium text-sm text-black' : 'font-medium text-sm text-white'}>{contract.title}</h4>
+                        <p className={theme === 'light' ? 'text-xs text-black mt-1' : 'text-xs text-white mt-1'}>{contract.client}</p>
                       </div>
                       <div className="text-right">
-                        <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-cyan-200 text-cyan-700' : 'text-xs px-2 py-1 rounded-full font-semibold bg-cyan-500/10 text-cyan-400'}>
+                        <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-black text-white' : 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black'}>
                           {contract.progress}%
                         </div>
                       </div>
@@ -201,95 +199,89 @@ export default function ContractsPage() {
             </div>
             {/* Detailed Contract View */}
             {selected && (
-              <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, type: 'spring' }} className={`${theme === 'light' ? 'bg-cyan-50 border border-cyan-200' : 'bg-[#161b22] border border-[#23272e]'}  rounded-lg shadow-2xl p-10`}>
-                <h1 className={`text-3xl font-bold ${theme === 'light' ? 'text-cyan-600' : 'text-white'} text-center mb-10`}>{contractDetails.title}</h1>
+              <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, type: 'spring' }} className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'}  rounded-lg p-10 transition-transform duration-200 hover:scale-[1.01] hover:shadow-2xl`}>
+                <h1 className={`text-3xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} text-center mb-10`}>{contractDetails.title}</h1>
                 <div className="grid md:grid-cols-2 gap-8 mb-10">
                   <div className="space-y-6">
-                    <div className={`${ theme === 'light' ? 'bg-cyan-100 border border-cyan-400' : 'bg-[#23272e] border border-neutral-600'} rounded-xl p-6 `}>
-                      <h2 className="text-xl font-semibold text-cyan-400 mb-4">Project Overview</h2>
+                    <div className={`${ theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Project Overview</h2>
                       <div className="space-y-3">
-                        <div className="flex justify-between"><span className="text-gray-400">Client</span><span className="text-gray-400 font-semibold">{contractDetails.client}</span></div>
-                        <div className="flex justify-between"><span className="text-gray-400">Freelancer</span><span className="text-gray-400 font-semibold">{contractDetails.freelancer}</span></div>
-                        <div className="flex justify-between"><span className="text-gray-400">Budget</span><span className="text-gray-400 font-semibold">${contractDetails.budget}</span></div>
+                        <div className="flex justify-between"><span className="text-black dark:text-white">Client</span><span className="text-black dark:text-white font-semibold">{contractDetails.client}</span></div>
+                        <div className="flex justify-between"><span className="text-black dark:text-white">Freelancer</span><span className="text-black dark:text-white font-semibold">{contractDetails.freelancer}</span></div>
+                        <div className="flex justify-between"><span className="text-black dark:text-white">Budget</span><span className="text-black dark:text-white font-semibold">${contractDetails.budget}</span></div>
                       </div>
                     </div>
-                    <div className={`${theme === 'light' ? 'bg-cyan-50 border border-cyan-400' : 'bg-[#23272e]'} rounded-xl p-6`}>
-                      <h2 className="text-xl font-semibold text-cyan-400 mb-4">Time Remaining</h2>
+                    <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Time Remaining</h2>
                       <CountdownTimer date={contractDetails.deadline} />
                     </div>
                   </div>
-                  <div className={`${theme === 'dark' ? 'bg-[#23272e]' : 'bg-cyan-50 border border-cyan-400'} rounded-xl p-6`}>
-                    <h2 className="text-xl font-semibold text-cyan-400 mb-4">Progress</h2>
+                  <div className={`${theme === 'dark' ? 'bg-black border border-white' : 'bg-white border border-black'} rounded-xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Progress</h2>
                     <div className="flex flex-col items-center">
                       <div className="relative">
                         <svg className="transform -rotate-90" width={120} height={120}>
-                          <circle cx={60} cy={60} r={52} stroke="rgba(255,255,255,0.08)" strokeWidth={8} fill="transparent" />
-                          <circle cx={60} cy={60} r={52} stroke="url(#gradient)" strokeWidth={8} fill="transparent" strokeDasharray={`${2 * Math.PI * 52} ${2 * Math.PI * 52}`} strokeDashoffset={(2 * Math.PI * 52) - (contractDetails.percentComplete / 100) * (2 * Math.PI * 52)} strokeLinecap="round" className="transition-all duration-1000 ease-out" />
-                          <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#ffffff" />
-                              <stop offset="100%" stopColor="#06b6d4" />
-                            </linearGradient>
-                          </defs>
+                          <circle cx={60} cy={60} r={52} stroke={theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'} strokeWidth={8} fill="transparent" />
+                          <circle cx={60} cy={60} r={52} stroke={theme === 'light' ? '#111' : '#3b82f6'} strokeWidth={8} fill="transparent" strokeDasharray={`${2 * Math.PI * 52} ${2 * Math.PI * 52}`} strokeDashoffset={(2 * Math.PI * 52) - (contractDetails.percentComplete / 100) * (2 * Math.PI * 52)} strokeLinecap="round" className="transition-all duration-1000 ease-out" />
                         </svg>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-2xl font-bold text-cyan-400">{contractDetails.percentComplete}%</span>
+                          <span className="text-2xl font-bold text-black dark:text-white">{contractDetails.percentComplete}%</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 mb-10">
-                  <div className={`${theme === 'light' ? 'bg-cyan-50 border border-cyan-300' : 'bg-[#23272e]'} rounded-xl p-6`}>
-                    <h2 className={`text-xl font-semibold text-cyan-400 mb-4`}>Milestones</h2>
+                  <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <h2 className={`text-xl font-semibold text-black dark:text-white mb-4`}>Milestones</h2>
                     <ProgressTimeline milestones={contractDetails.milestones} />
                   </div>
-                  <div className={`${theme === 'dark' ?  'bg-[#23272e]' : 'bg-cyan-50 border border-cyan-400'} rounded-xl p-6`}>
-                    <h2 className="text-xl font-semibold text-cyan-400 mb-4">Work Log</h2>
+                  <div className={`${theme === 'dark' ?  'bg-black border border-white' : 'bg-white border border-black'} rounded-xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Work Log</h2>
                     <div className="space-y-4">
                       {contractDetails.workLog.map((log, idx) => (
-                        <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'dark' ? 'bg-[#18181b]' : 'bg-cyan-200'} rounded-lg`}>
-                          <div className={`w-2 h-2 rounded-full ${log.status === 'completed' ? 'bg-green-500' : 'bg-indigo-500'}`} />
+                        <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'dark' ? 'bg-black border border-white' : 'bg-white border border-black'} rounded-lg transition-transform duration-150 hover:scale-105 hover:shadow-md`}>
+                          <div className={`w-2 h-2 rounded-full ${log.status === 'completed' ? 'bg-green-500' : theme === 'light' ? 'bg-black' : 'bg-white'}`} />
                           <div className="flex-1">
-                            <div className={` ${theme === 'dark' ? 'text-white' : 'text-gray-600'} font-medium`}>{log.note}</div>
-                            <div className="text-sm text-gray-400">{log.date}</div>
+                            <div className={` ${theme === 'dark' ? 'text-white' : 'text-black'} font-medium`}>{log.note}</div>
+                            <div className="text-sm text-black dark:text-white">{log.date}</div>
                           </div>
-                          <div className="text-cyan-500 font-semibold">{log.hours}h</div>
+                          <div className="text-black dark:text-white font-semibold">{log.hours}h</div>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8">
-                  <div className={`rounded-xl p-6 ${theme === 'light' ? 'bg-cyan-50 border border-cyan-300' : 'bg-[#23272e]'}`}>
-                    <h2 className="text-xl font-semibold text-cyan-400 mb-4">Recent Activity</h2>
+                  <div className={`rounded-xl p-6 ${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} transition-transform duration-200 hover:scale-105 hover:shadow-lg`}> 
+                    <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Recent Activity</h2>
                     <div className="space-y-4">
                       {contractDetails.recentActivity.map((activity, idx) => (
-                        <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'light' ? 'bg-cyan-200' : 'bg-[#23272e]'} rounded-lg`}>
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${activity.status === 'completed' ? 'bg-green-500' : 'bg-indigo-500'}`}>
+                        <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-lg transition-transform duration-150 hover:scale-105 hover:shadow-md`}>
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${activity.status === 'completed' ? 'bg-green-500' : theme === 'light' ? 'bg-black' : 'bg-white'}`}>
                             {activity.type === 'milestone' ? (<CheckCircle2 className="w-4 h-4 text-white" />) : activity.type === 'meeting' ? (<Calendar className="w-4 h-4 text-white" />) : (<FileText className="w-4 h-4 text-white" />)}
                           </div>
                           <div className="flex-1">
-                            <div className={`${theme === 'light' ? 'text-gray-600' : 'text-white'} font-medium`}>{activity.title}</div>
-                            <div className="text-sm text-gray-400">{activity.date}</div>
+                            <div className={`${theme === 'light' ? 'text-black' : 'text-white'} font-medium`}>{activity.title}</div>
+                            <div className="text-sm text-black dark:text-white">{activity.date}</div>
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div className={`${theme === 'dark' ? 'bg-[#23272e]' : 'bg-cyan-50 border border-cyan-300'} rounded-xl p-6`}>
-                    <h2 className="text-xl font-semibold text-cyan-400 mb-4">Quick Actions</h2>
+                  <div className={`${theme === 'dark' ? 'bg-black border border-white' : 'bg-white border border-black'} rounded-xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Quick Actions</h2>
                     <div className="grid grid-cols-2 gap-4">
-                      <Button className="w-full bg-gradient-to-r from-cyan-300 to-cyan-500 text-white h-12"><MessageSquare className="w-4 h-4 mr-2" />Open Chat</Button>
-                      <Button className="w-full bg-gradient-to-r from-cyan-300 to-cyan-500 text-white h-12"><Calendar className="w-4 h-4 mr-2" />Schedule Meeting</Button>
-                      <Button className="w-full bg-gradient-to-r from-cyan-300 to-cyan-500 text-white h-12"><FileText className="w-4 h-4 mr-2" />Update Progress</Button>
-                      <Button className="w-full bg-gradient-to-r from-cyan-300 to-cyan-500 text-white h-12"><Award className="w-4 h-4 mr-2" />Add Milestone</Button>
+                      <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-transform duration-200 hover:scale-105 hover:shadow-md"><MessageSquare className="w-4 h-4 mr-2" />Open Chat</Button>
+                      <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-transform duration-200 hover:scale-105 hover:shadow-md"><Calendar className="w-4 h-4 mr-2" />Schedule Meeting</Button>
+                      <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-transform duration-200 hover:scale-105 hover:shadow-md"><FileText className="w-4 h-4 mr-2" />Update Progress</Button>
+                      <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-transform duration-200 hover:scale-105 hover:shadow-md"><Award className="w-4 h-4 mr-2" />Add Milestone</Button>
                     </div>
                   </div>
                 </div>
                 <div className="mt-10 flex justify-center">
                   <Link href="/dashboard">
-                    <Button className="bg-gradient-to-r from-cyan-300 to-cyan-500 text-white px-8 py-3 text-lg font-semibold">Take me to dashboard</Button>
+                    <Button className="bg-black text-white px-8 py-3 text-lg font-semibold border border-white dark:border-black transition-transform duration-200 hover:scale-105 hover:shadow-lg">Take me to dashboard</Button>
                   </Link>
                 </div>
               </motion.div>
@@ -297,23 +289,23 @@ export default function ContractsPage() {
           </div>
           {/* Quick Stats */}
           <div className="flex flex-col gap-4">
-            <div className={`${theme === 'light' ? 'bg-cyan-50 border border-cyan-300' : 'bg-[#23272e]' } border border-[#23272e] rounded-2xl p-4`}>
+            <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white' } rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
               <div className="flex items-center gap-2 mb-2">
-                <Award className="w-5 h-5 text-cyan-400" />
-                <span className="text-sm text-gray-400">Total Earned</span>
+                <Award className="w-5 h-5 text-black dark:text-white" />
+                <span className="text-sm text-black dark:text-white">Total Earned</span>
               </div>
-              <span className={`font-black text-3xl ${theme === 'light' ? 'text-cyan-500' : 'text-white'}`}>$28,465</span>
+              <span className={`font-black text-3xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>$28,465</span>
             </div>
-            <div className={` ${theme === 'light' ? 'bg-cyan-50 border border-cyan-300' : 'bg-[#23272e]' } rounded-2xl p-4`}>
+            <div className={` ${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white' } rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
               <div className="flex items-center gap-2 mb-2">
-                <Activity className="w-5 h-5 text-cyan-400" />
-                <span className="text-sm text-gray-400">Projects</span>
+                <Activity className="w-5 h-5 text-black dark:text-white" />
+                <span className="text-sm text-black dark:text-white">Projects</span>
               </div>
-              <span className={`font-black text-3xl ${theme === 'light' ? 'text-cyan-500' : 'text-white'}`}>12</span>
+              <span className={`font-black text-3xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>12</span>
             </div>
           </div>
           <div className = 'flex justify-end items-end'>
-            <Button variant="secondary" className="border-[#23272e] text-[#f0f6fc] hover:bg-cyan-400"
+            <Button variant="secondary" className="border-black text-black dark:text-white hover:bg-white dark:hover:bg-black transition-transform duration-200 hover:scale-105 hover:shadow-md"
             onClick = {(e) => {
               e.preventDefault()
               navigate.push('/')
