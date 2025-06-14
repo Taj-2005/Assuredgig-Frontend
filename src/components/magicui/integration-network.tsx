@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-
+import { useTheme } from "@/context/ThemeContext";
 // Example node data for a horizontal neural network
 const nodes = [
   { id: 0, x: 80, y: 60, r: 32, label: "G", color: "#34A853" }, // hub
@@ -24,6 +24,7 @@ const svgWidth = 480;
 const svgHeight = 220;
 
 export default function IntegrationNetwork({ className, headline }: { className?: string; headline?: string }) {
+  const { theme } = useTheme();
   return (
     <div
       className={cn(
@@ -33,7 +34,7 @@ export default function IntegrationNetwork({ className, headline }: { className?
       )}
     >
       {headline && (
-        <h3 className="text-2xl font-extrabold mb-2 text-white leading-tight drop-shadow-lg z-20 relative text-center" style={{marginTop: 8}}>{headline}</h3>
+        <h3 className={`text-2xl font-extrabold mb-2 leading-tight drop-shadow-lg z-20 relative text-center ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{marginTop: 8}}>{headline}</h3>
       )}
       <svg
         className="block mx-auto"

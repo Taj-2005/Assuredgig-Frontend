@@ -11,7 +11,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] text-[#F8F9FA] hover:opacity-90 focus:ring-[#6366F1] focus:ring-offset-[#1C1F23]',
+        default: 'bg-gradient-to-r from-cyan-200 to-cyan-500 text-[#F8F9FA] hover:opacity-90 focus:ring-cyan-300 focus:ring-offset-cyan-100',
         secondary: 'bg-[#252830] text-[#A8B2C1] hover:bg-[#2D3139] focus:ring-[#6366F1] focus:ring-offset-[#1C1F23]',
         ghost: 'bg-transparent text-[#A8B2C1] hover:bg-[#252830] focus:ring-[#6366F1] focus:ring-offset-[#1C1F23]',
         destructive: 'bg-[#EF4444] text-[#F8F9FA] hover:bg-[#DC2626] focus:ring-[#EF4444] focus:ring-offset-[#1C1F23]',

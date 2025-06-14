@@ -1,13 +1,14 @@
+import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-
 interface AnimatedBeamMultipleOutputDemoProps {
   className?: string;
 }
 
 export default function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBeamMultipleOutputDemoProps) {
+  const { theme } = useTheme();
   const outputs = [
-    { name: "GitHub", color: "bg-[#2DA44E]" },
+    { name: "GitHub", color: "bg-[#2DA44E]"},
     { name: "Slack", color: "bg-[#4A154B]" },
     { name: "Discord", color: "bg-[#5865F2]" },
     { name: "Notion", color: "bg-[#000000]" },

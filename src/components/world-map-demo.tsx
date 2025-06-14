@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import WorldMap from "./ui/world-map";
-
 export default function WorldMapDemo() {
   return (
     <div className="w-full">
@@ -29,8 +28,8 @@ export default function WorldMapDemo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8"
-        >
+          className="mt-8"        
+          >
           <WorldMap
             dots={[
               {

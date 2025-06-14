@@ -15,14 +15,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     // Check if we're in the browser
     if (typeof window === 'undefined') return 'light';
-    
+
     // Check for system preference
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const storedTheme = localStorage.getItem('theme') as Theme;
-    
+
     // Use stored theme if available, otherwise use system preference
     const initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
-    
+
     // Apply theme immediately
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     return initialTheme;
@@ -31,7 +31,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Listen for system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const handleChange = (e: MediaQueryListEvent) => {
       if (!localStorage.getItem('theme')) {
         const newTheme = e.matches ? 'dark' : 'light';
@@ -82,4 +82,4 @@ export function useTheme() {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
-} 
+}

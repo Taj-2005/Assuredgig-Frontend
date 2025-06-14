@@ -94,7 +94,7 @@ export default function GigsPage() {
     <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
       <Button
         variant="secondary"
-        className={theme === 'light' ? 'border-cyan-300 text-cyan-600 hover:bg-cyan-50 w-40 fixed top-2 left-3 z-10' : 'border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e] w-40 fixed top-2 left-3 z-10'}
+        className={theme === 'light' ? 'border-cyan-300 text-white hover:bg-cyan-500 w-40 fixed top-2 left-3 z-10' : 'border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e] w-40 fixed top-2 left-3 z-10'}
         onClick={(e) => {
           e.preventDefault();
           navigate.push('/')
@@ -122,11 +122,11 @@ export default function GigsPage() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 mb-8"
             >
-              <Sparkles className="w-8 h-8 text-indigo-400" />
+              <Sparkles className="w-8 h-8 text-cyan-600" />
             </motion.div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-500'}  mb-6`}>
               Find Your Next
-              <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent"> Freelance Opportunity</span>
+              <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent"> Freelance Opportunity</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
               Browse through our curated list of high-quality gigs and find the perfect match for your skills.
@@ -144,7 +144,7 @@ export default function GigsPage() {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <Input
                   placeholder="Search gigs..."
-                  className="pl-10 bg-[#161b22] border-[#23272e] text-[#f0f6fc] placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
+                  className={`pl-10 ${ theme === 'light' ? 'bg-cyan-100 border-2 border-cyan-600' : 'bg-[#161b22] border-[#23272e]'} text-[#f0f6fc] placeholder:text-gray-400 focus:ring-2 focus:ring-cyan-400`}
                 />
               </div>
             </div>
@@ -176,8 +176,8 @@ export default function GigsPage() {
                   onClick={() => toggleTag(tag)}
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-150
                     ${selectedTags.includes(tag)
-                      ? 'bg-gradient-to-r from-indigo-500 to-violet-500 text-white shadow-md'
-                      : 'bg-[#161b22] text-gray-400 hover:bg-[#23272e] hover:text-[#f0f6fc] border border-[#23272e]'}
+                      ? 'bg-gradient-to-r from-cyan-200 to-cyan-500 text-white shadow-md scale-105 mx-4 my-2'
+                      : 'bg-cyan-200 text-black hover:bg-[#23272e] hover:text-[#f0f6fc] mx-4 my-2'}
                   `}
                 >
                   <Tag className="w-3 h-3 inline mr-1" />
@@ -190,7 +190,7 @@ export default function GigsPage() {
       </section>
 
       {/* Gigs Grid */}
-      <section className="py-12 px-6 w-full">
+      <section className="py-12 px-6 w-full mt-36">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {gigs.map((gig, index) => (
@@ -200,16 +200,16 @@ export default function GigsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-[#161b22] border border-[#23272e] rounded-2xl overflow-hidden hover:border-indigo-500/70 shadow-lg transition-all duration-150"
+                className={`${theme === 'dark' ? 'bg-[#161b22]' : 'bg-cyan-200 border-2 border-cyan-400'} border border-[#23272e] rounded-2xl overflow-hidden shadow-lg transition-all duration-150`}
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="text-lg font-semibold text-[#f0f6fc]">{gig.title}</h3>
-                      <p className="text-gray-400">{gig.company}</p>
+                      <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-[#f0f6fc]' : 'text-black'}`}>{gig.title}</h3>
+                      <p className={`${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}>{gig.company}</p>
                     </div>
-                    <div className="flex items-center text-indigo-400">
-                      <span className="text-sm font-medium">{gig.rating}</span>
+                    <div className="flex items-center text-cyan-500">
+                      <span className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>{gig.rating}</span>
                       <span className="ml-1">★</span>
                     </div>
                   </div>
@@ -239,7 +239,7 @@ export default function GigsPage() {
                     </div>
                   </div>
                   <div className="mt-6 flex gap-4">
-                    <Button className="flex-1 bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:opacity-90 shadow-md">
+                    <Button className="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white hover:opacity-90 shadow-md">
                       Apply Now
                     </Button>
                     <Button variant="secondary" className="flex-1 border-[#23272e] text-[#f0f6fc] hover:bg-[#23272e]">
@@ -266,9 +266,9 @@ export default function GigsPage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-black border-t border-[#23272e] py-8 mt-auto flex gap-6">
+      <footer className={`w-full ${theme === 'light' ? 'bg-white' : 'bg-black'} border-t border-[#23272e] py-8 mt-auto flex gap-6`}>
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
-          <span className="text-lg font-semibold text-white tracking-wide mb-2">Assured Gig</span>
+          <span className={`text-lg font-semibold ${theme === 'light' ? 'text-gray-700' : 'text-white'} tracking-wide mb-2`}>Assured Gig</span>
           <span className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
         </div>
       </footer>

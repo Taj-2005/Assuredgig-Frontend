@@ -54,14 +54,18 @@ export default function Navbar() {
   }, [theme, pathname]);
 
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
-      isScrolled
-        ? theme === 'light'
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-sky-400"
-          : "bg-black/90 backdrop-blur-md shadow-sm"
-        : "bg-transparent"
-    )}>
+    <nav
+      className={cn(
+        'fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300',
+        theme === 'light'
+          ? isScrolled
+            ? 'bg-white border border-b-2 border-b-sky-400 backdrop-blur-lg'
+            : 'bg-white'
+          : isScrolled
+            ? 'bg-black/80 backdrop-blur-lg'
+            : 'bg-transparent'
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -191,4 +195,4 @@ export default function Navbar() {
       </AnimatePresence>
     </nav>
   );
-} 
+}
