@@ -32,7 +32,7 @@ export default function ContactPage() {
     <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
       <Button
         variant="secondary"
-        className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10' : 'border-white text-white hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10'}
+        className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10' : 'border-white text-black hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10'}
         onClick = {(e) => {
           e.preventDefault();
           navigate.push('/')

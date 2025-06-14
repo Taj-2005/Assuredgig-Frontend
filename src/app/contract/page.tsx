@@ -307,7 +307,7 @@ export default function ContractsPage() {
             </div>
           </div>
           <div className = 'flex justify-end items-end'>
-            <Button variant="secondary" className="border-black text-black dark:text-white hover:bg-white dark:hover:bg-black transition-transform duration-200 hover:scale-105 hover:shadow-md"
+            <Button variant="secondary" className="border-black text-white dark:text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105 hover:shadow-md"
             onClick = {(e) => {
               e.preventDefault()
               navigate.push('/')

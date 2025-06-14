@@ -94,7 +94,7 @@ export default function GigsPage() {
     <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
       <Button
         variant="secondary"
-        className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105'}
+        className={theme === 'light' ? 'border-black text-white bg-black hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105'}
         onClick={(e) => {
           e.preventDefault();
           navigate.push('/')
@@ -156,7 +156,7 @@ export default function GigsPage() {
                   ))}
                 </SelectContent>
               </Select>
-              <Button variant="secondary" className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
+              <Button variant="secondary" className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
                 <Filter className="w-4 h-4 mr-2" />
                 Filters
               </Button>
@@ -234,7 +234,7 @@ export default function GigsPage() {
         <div className="max-w-7xl mx-auto text-center">
           <Button
             variant="secondary"
-            className={theme === 'light' ? 'border-black text-black hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
+            className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
           >
             Load More Gigs
           </Button>
