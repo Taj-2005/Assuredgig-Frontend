@@ -6,11 +6,6 @@ export default function PainPointsSection() {
   const { theme } = useTheme();
   const painPoints = [
     {
-      icon: <Repeat className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
-      title: 'Revision Difficulties',
-      desc: `Multiple revision requests leading to delays and increased costs.`,
-    },
-    {
       icon: <ThumbsDown className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
       title: 'Quality Concerns',
       desc: `Subpar quality due to rushed work.`,
@@ -19,11 +14,6 @@ export default function PainPointsSection() {
       icon: <DollarSign className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
       title: 'Payment, Dispute, and Rating Issues',
       desc: `Freelancers not fulfilling contractual obligations, difficulties in rating.`,
-    },
-    {
-      icon: <Users className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
-      title: 'Outsourcing Complications',
-      desc: `Freelancers acting as middlemen, outsourcing work to others, leading to communication issues and delays.`,
     },
     {
       icon: <AlertTriangle className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
@@ -44,11 +34,6 @@ export default function PainPointsSection() {
       icon: <CalendarX2 className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
       title: 'Delays / Behind Schedule',
       desc: `Freelancers not completing work on time.`,
-    },
-    {
-      icon: <Shield className="w-8 h-8 text-black bg-gray-200 rounded-full p-1" />,
-      title: 'Other Miscellaneous Issues',
-      desc: `Trust issues, platform security, payment options, price, and communication tools.`,
     },
   ];
   return (
