@@ -48,7 +48,9 @@ export default function HomePage() {
         </div>
         <PainPointsSection />
         <SolutionSection />
-        <GetStartedSection />
+        <div className='lg:px-70'>
+          <GetStartedSection />
+        </div>
         <div className="my-16 w-full flex justify-center">
           <div
             className={
