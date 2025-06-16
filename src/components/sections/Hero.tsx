@@ -37,7 +37,7 @@ export default function Hero() {
       ? "relative min-h-[80vh] flex flex-col bg-gradient-to-b from-white to-cyan-50/30" 
       : "relative min-h-[80vh] flex flex-col bg-gradient-to-b from-black to-cyan-950/20"}>
       <Navbar />
-      <div className="flex flex-1 items-center justify-center w-full pt-24 pb-12">
+      <div className="flex flex-1 items-center justify-center w-full pb-12">
         <main className="w-full max-w-7xl px-4 flex flex-col items-center justify-center text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
