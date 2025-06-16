@@ -30,7 +30,7 @@ export default function SolutionSection() {
   
   return (
     <section className={`w-full py-24 px-4 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto lg:px-40">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,21 +80,23 @@ export default function SolutionSection() {
           ))}
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center mt-10"
-        >
-          <div className={`flex items-center gap-3 mb-2 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
-            <RocketIcon className="w-7 h-7 animate-bounce" />
-            <span className="text-lg font-bold">What's Next?</span>
-          </div>
-          <p className={`text-center max-w-2xl text-base ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
-            V2 and V3 will bring even more: AI-powered matching, instant contracts, advanced analytics, and more ways to protect your work and your money. AssuredGig is just getting started—join us on the journey!
-          </p>
-        </motion.div>
+        <section className='pt-40'>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center"
+          >
+            <div className={`flex items-center gap-3 mb-2 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
+              <RocketIcon className="w-12 h-12 animate-bounce" />
+              <h2 className={`text-5xl font-extrabold mb-4 leading-tight ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>What's Next?</h2>
+            </div>
+            <p className={`text-xl text-center max-w-2xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
+              V2 and V3 will bring even more: AI-powered matching, instant contracts, advanced analytics, and more ways to protect your work and your money. AssuredGig is just getting started join us on the journey!
+            </p>
+          </motion.div>
+        </section>
       </div>
     </section>
   );
