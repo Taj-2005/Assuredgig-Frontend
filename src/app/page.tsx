@@ -7,7 +7,6 @@ import TypewriterEffectSmoothDemo from "@/components/ui/typewriter-effect-demo-1
 import PainPointsSection from "@/components/sections/PainPoints";
 import SolutionSection from '@/components/sections/SolutionSection';
 import GetStartedSection from '@/components/sections/GetStartedSection';
-import WorldMapDemo from "@/components/world-map-demo";
 import { useTheme } from "@/context/ThemeContext";
 
 export default function HomePage() {
@@ -60,7 +59,6 @@ export default function HomePage() {
             }
           >
             <TypewriterEffectSmoothDemo />
-            <WorldMapDemo />
           </div>
         </div>
       </section>
