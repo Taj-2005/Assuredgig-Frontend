@@ -67,6 +67,7 @@ export default function Hero() {
           >
             <Button
               size="lg"
+              aria-label="Get Started"
               className={theme === "light"
                 ? "bg-gradient-to-r from-cyan-400 to-cyan-500 text-white hover:from-cyan-500 hover:to-cyan-600 w-48 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                 : "bg-gradient-to-r from-cyan-400 to-cyan-500 text-white hover:from-cyan-500 hover:to-cyan-600 w-40 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200"}
@@ -76,6 +77,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="ghost"
+              aria-label="Learn More"
               className={theme === "light"
                 ? "border-2 border-gray-300 text-gray-900 hover:bg-gray-100 w-48 text-base font-semibold transition-all duration-200"
                 : "border-2 border-white text-white hover:bg-white hover:text-black w-40 transition-all duration-200"}
