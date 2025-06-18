@@ -1,5 +1,7 @@
 import { FilePlusIcon, MagnifyingGlassIcon, BarChartIcon } from '@radix-ui/react-icons';
 import { useTheme } from '@/context/ThemeContext';
+import Image from 'next/image';
+
 export default function GetStartedSection() {
   const { theme } = useTheme();
   const steps = [
@@ -50,10 +52,12 @@ export default function GetStartedSection() {
           </div>
           {/* Image/mockup */}
           <div className="flex justify-center items-center">
-            <img
+            <Image
+              width={600}
+              height={400}
               src="/dashboard-mockup.png"
               alt="Dashboard Mockup"
-              className="rounded-2xl shadow-xl w-full max-w-lg border border-cyan-100"
+              priority
             />
           </div>
         </div>

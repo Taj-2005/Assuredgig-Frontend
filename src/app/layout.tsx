@@ -9,7 +9,18 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Assured Gig - Premium Freelancing Platform',
-  description: 'Connect with top freelancers and clients in a secure, premium environment.',
+  description: 'Assured Gig connects top freelancers and clients in a secure, premium environment with verified talent, flexible work models, and end-to-end project tracking.',
+  keywords: ['freelancing', 'AssuredGig', 'remote work', 'clients', 'top freelancers', 'premium platform'],
+  metadataBase: new URL('https://assuredgig.com'),
+  openGraph: {
+    title: 'Assured Gig - Premium Freelancing Platform',
+    description: 'Connect with top freelancers and clients in a secure, premium environment.',
+    url: 'https://assuredgig.com',
+    siteName: 'Assured Gig',
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: 'index, follow',
 };
 
 export default function RootLayout({
