@@ -18,6 +18,7 @@ import { useTheme } from '@/context/ThemeContext';
 const navItems = [
   { name: 'Gigs', path: '/gigs' },
   { name: 'Contracts', path: '/contract' },
+  { name: 'Portfolio', path: '/portfolio-demo' },
   { name: 'Dashboard', path: '/dashboard' },
   { name: 'Contact', path: '/contact' },
 ];

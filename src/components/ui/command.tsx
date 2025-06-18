@@ -44,6 +44,11 @@ const CommandPalette = ({ isOpen, onClose }: CommandPaletteProps) => {
       description: 'Create or manage contracts',
     },
     {
+      name: 'Portfolio',
+      path: '/portfolio-demo',
+      description: 'View freelance portfolio',
+    },
+    {
       name: 'Contact',
       path: '/contact',
       description: 'Get in touch with us',

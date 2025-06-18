@@ -160,7 +160,7 @@ const FreelancerDashboard = () => {
                     key={contract.id}
                     onClick={() => setActiveContract(index)}
                     className={cn(
-                      'p-4 rounded-xl cursor-pointer transition-all duration-300 border transition-transform hover:scale-105 hover:shadow-lg',
+                      'p-4 rounded-xl cursor-pointer transition-all duration-300 border hover:scale-105 hover:shadow-lg',
                       activeContract === index
                         ? `${isDarkTheme ? 'bg-white text-black border-white shadow-md' : 'bg-gray-200 text-black border-gray-200 shadow-md'}` // Updated active state for light mode
                         : `${isDarkTheme ? 'bg-black hover:bg-gray-800 text-white hover:text-white border-white' : 'bg-white text-black hover:bg-gray-200 hover:text-black border-gray-200'}` // Updated hover for light mode & dark mode
