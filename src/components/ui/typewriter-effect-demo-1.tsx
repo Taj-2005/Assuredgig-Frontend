@@ -25,6 +25,7 @@ export default function TypewriterEffectSmoothDemo() {
       </h2>
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
         <button
+          aria-label="Join Now"
           className={theme === "light"
             ? "w-40 h-10 rounded-xl bg-black border border-transparent text-white text-sm"
             : "w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm"}
@@ -36,6 +37,7 @@ export default function TypewriterEffectSmoothDemo() {
           Join now
         </button>
         <button
+          aria-label="Signup"
           className={theme === "light"
             ? "w-40 h-10 rounded-xl bg-white text-black border border-black text-sm"
             : "w-40 h-10 rounded-xl bg-white text-black border border-black text-sm"}
