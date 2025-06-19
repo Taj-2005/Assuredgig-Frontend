@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { useTheme } from '@/context/ThemeContext';
 
 const navItems = [
+  {name: 'Home', path: '/'},
   { name: 'Gigs', path: '/gigs' },
   { name: 'Contracts', path: '/contract' },
   { name: 'Portfolio', path: '/portfolio-demo' },
