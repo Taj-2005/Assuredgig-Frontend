@@ -360,3 +360,7 @@ html {
 .animate-pause {
   animation-play-state: paused;
 }
+html,
+body {
+  overscroll-behavior: none;
+}
