@@ -1,25 +1,64 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Clock, TrendingUp, DollarSign, CheckCircle, AlertCircle, Briefcase, Bell, Settings, Play, Pause, BarChart3, Activity, Zap, Target, Award } from 'lucide-react';
+import {
+  Clock, TrendingUp, DollarSign, CheckCircle, AlertCircle,
+  Briefcase, Bell, Settings, Play, Pause, BarChart3,
+  Activity, Zap, Target, Award
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/context/ThemeContext';
 
 const FreelancerDashboard = () => {
   const [activeContract, setActiveContract] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 15, hours: 8, minutes: 42, seconds: 18 });
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
 
-  // Sample contract data
   const contracts = [
-    { id: 1, title: 'E-commerce Platform Development', client: 'TechCorp Inc.', progress: 68, deadline: '2025-06-18', budget: 15000, earned: 10200, status: 'In Progress', priority: 'high', tasks: { completed: 14, total: 22 } },
-    { id: 2, title: 'Mobile App UI/UX Design', client: 'StartupXYZ', progress: 89, deadline: '2025-06-10', budget: 8500, earned: 7565, status: 'Near Completion', priority: 'medium', tasks: { completed: 18, total: 20 } },
-    { id: 3, title: 'Brand Identity Package', client: 'Creative Agency', progress: 34, deadline: '2025-06-25', budget: 5000, earned: 1700, status: 'In Progress', priority: 'low', tasks: { completed: 6, total: 18 } }
+    {
+      id: 1,
+      title: 'E-commerce Platform Development',
+      client: 'TechCorp Inc.',
+      progress: 68,
+      deadline: '2025-06-18',
+      budget: 15000,
+      earned: 10200,
+      status: 'In Progress',
+      priority: 'high',
+      tasks: { completed: 14, total: 22 }
+    },
+    {
+      id: 2,
+      title: 'Mobile App UI/UX Design',
+      client: 'StartupXYZ',
+      progress: 89,
+      deadline: '2025-06-10',
+      budget: 8500,
+      earned: 7565,
+      status: 'Near Completion',
+      priority: 'medium',
+      tasks: { completed: 18, total: 20 }
+    },
+    {
+      id: 3,
+      title: 'Brand Identity Package',
+      client: 'Creative Agency',
+      progress: 34,
+      deadline: '2025-06-25',
+      budget: 5000,
+      earned: 1700,
+      status: 'In Progress',
+      priority: 'low',
+      tasks: { completed: 6, total: 18 }
+    }
   ];
+
   const currentContract = contracts[activeContract];
 
-  // Timer countdown effect
   useEffect(() => {
     if (isTimerRunning) {
       const timer = setInterval(() => {
@@ -35,43 +74,35 @@ const FreelancerDashboard = () => {
     }
   }, [isTimerRunning]);
 
-  // Determine if the current theme is dark based on the document's class list.
-  // This assumes a mechanism (like a theme toggle or system preference) sets a 'dark' class on the root HTML element.
-  const isDarkTheme = typeof window !== 'undefined' ? document.documentElement.classList.contains('dark') : false;
-
-  // Progress ring component
   const ProgressRing = ({ progress, size = 120, strokeWidth = 8 }: { progress: number; size?: number; strokeWidth?: number }) => {
     const radius = (size - strokeWidth) / 2;
     const circumference = radius * 2 * Math.PI;
     const strokeDasharray = `${circumference} ${circumference}`;
     const strokeDashoffset = circumference - (progress / 100) * circumference;
-    
+
     return (
       <div className="relative">
         <svg className="transform -rotate-90" width={size} height={size}>
-          {/* Background circle for the progress ring */}
-          <circle 
-            cx={size / 2} 
-            cy={size / 2} 
-            r={radius} 
-            stroke={isDarkTheme ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'} 
-            strokeWidth={strokeWidth} 
-            fill="transparent" 
+          <circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            stroke={isDarkTheme ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}
+            strokeWidth={strokeWidth}
+            fill="transparent"
           />
-          {/* Foreground circle showing actual progress */}
-          <circle 
-            cx={size / 2} 
-            cy={size / 2} 
-            r={radius} 
-            stroke={isDarkTheme ? 'url(#blue-gradient)' : 'black'} // Use gradient for dark, solid black for light
-            strokeWidth={strokeWidth} 
-            fill="transparent" 
-            strokeDasharray={strokeDasharray} 
-            strokeDashoffset={strokeDashoffset} 
-            strokeLinecap="round" 
-            className="transition-all duration-1000 ease-out" 
+          <circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            stroke={isDarkTheme ? 'url(#blue-gradient)' : 'black'}
+            strokeWidth={strokeWidth}
+            fill="transparent"
+            strokeDasharray={strokeDasharray}
+            strokeDashoffset={strokeDashoffset}
+            strokeLinecap="round"
+            className="transition-all duration-1000 ease-out"
           />
-          {/* Define gradient for dark mode progress ring */}
           {isDarkTheme && (
             <defs>
               <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -81,7 +112,6 @@ const FreelancerDashboard = () => {
             </defs>
           )}
         </svg>
-        {/* Text displaying the progress percentage */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span className={`text-2xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'}`}>{progress}%</span>
         </div>
@@ -89,33 +119,34 @@ const FreelancerDashboard = () => {
     );
   };
 
-  // Animated counter component
   const AnimatedCounter = ({ value, prefix = '', suffix = '' }: { value: number; prefix?: string; suffix?: string }) => {
     const [displayValue, setDisplayValue] = useState(0);
-    
+
     useEffect(() => {
       let start = 0;
-      const increment = value / 100; // Increment value over 100 steps for smooth animation
+      const increment = value / 100;
       const timer = setInterval(() => {
         start += increment;
         if (start >= value) {
           setDisplayValue(value);
           clearInterval(timer);
         } else {
-          setDisplayValue(Math.floor(start)); // Round down to integer for display
+          setDisplayValue(Math.floor(start));
         }
-      }, 20); // Update every 20ms
-      return () => clearInterval(timer); // Cleanup interval on component unmount
-    }, [value]); // Re-run effect if value changes
+      }, 20);
+      return () => clearInterval(timer);
+    }, [value]);
 
     return (
-      <span className={`font-black text-3xl ${isDarkTheme ? 'text-white' : 'text-black'}`}>{prefix}{displayValue.toLocaleString()}{suffix}</span>
+      <span className={`font-black text-3xl ${isDarkTheme ? 'text-white' : 'text-black'}`}>
+        {prefix}{displayValue.toLocaleString()}{suffix}
+      </span>
     );
   };
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className={`min-h-screen pt-20 w-full flex flex-col ${isDarkTheme ? 'bg-black' : 'bg-gray-100'}`}>
 
         {/* Main Content Area */}
