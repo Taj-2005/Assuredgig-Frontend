@@ -10,6 +10,7 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
+			treadly : "#fef7f1",
   			dark: {
   				DEFAULT: '#0a0f1a',
   				surface: '#181f2a',

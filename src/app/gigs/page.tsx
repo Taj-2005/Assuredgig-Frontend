@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {useRouter} from 'next/navigation'
 import { useTheme } from '@/context/ThemeContext';
+import Navbar from '@/components/layout/Navbar';
 
 const categories = [
   'All Categories',
@@ -91,163 +92,156 @@ export default function GigsPage() {
   };
 
   return (
-    <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
-      <Button
-        variant="secondary"
-        className={theme === 'light' ? 'border-black text-white bg-black hover:bg-black hover:text-white w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black w-40 fixed top-2 left-3 z-10 transition-transform duration-200 hover:scale-105'}
-        onClick={(e) => {
-          e.preventDefault();
-          navigate.push('/')
-        }}
-      >
-        Back To Home
-      </Button>
-      <section className="relative min-h-[60vh] w-full">
-        {/* Background Effects */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className={theme === 'light' ? 'w-full h-full bg-white' : 'w-full h-full bg-black'} />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
+    <>
+      <Navbar />
+      <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
+        <section className="relative min-h-[60vh] w-full">
+          {/* Background Effects */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className={theme === 'light' ? 'w-full h-full bg-white' : 'w-full h-full bg-black'} />
+          </div>
+          <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-16">
             <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-black mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black border border-white mb-8'}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
             >
-              <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-white'} />
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-black mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black border border-white mb-8'}
+              >
+                <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-white'} />
+              </motion.div>
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Find Your Next <span className="text-black dark:text-white">Freelance Opportunity</span></h1>
+              <p className={theme === 'light' ? 'text-lg sm:text-xl text-black max-w-2xl mx-auto mb-8' : 'text-lg sm:text-xl text-white max-w-2xl mx-auto mb-8'}>
+                Browse through our curated list of high-quality gigs and find the perfect match for your skills.
+              </p>
             </motion.div>
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Find Your Next <span className="text-black dark:text-white">Freelance Opportunity</span></h1>
-            <p className={theme === 'light' ? 'text-lg sm:text-xl text-black max-w-2xl mx-auto mb-8' : 'text-lg sm:text-xl text-white max-w-2xl mx-auto mb-8'}>
-              Browse through our curated list of high-quality gigs and find the perfect match for your skills.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Search and Filter Section */}
-      <section className="py-8 px-6 w-full">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1">
-              <div className="relative">
-                <Search className={theme === 'light' ? 'absolute left-3 top-1/2 transform -translate-y-1/2 text-black' : 'absolute left-3 top-1/2 transform -translate-y-1/2 text-white'} />
-                <Input
-                  placeholder="Search gigs..."
-                  className={`pl-10 ${ theme === 'light' ? 'bg-white border-2 border-black text-black' : 'bg-black border-2 border-white text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
-                />
+        {/* Search and Filter Section */}
+        <section className="py-8 px-6 w-full">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <div className="relative">
+                  <Search className={theme === 'light' ? 'absolute left-3 top-1/2 transform -translate-y-1/2 text-black' : 'absolute left-3 top-1/2 transform -translate-y-1/2 text-white'} />
+                  <Input
+                    placeholder="Search gigs..."
+                    className={`pl-10 ${ theme === 'light' ? 'bg-white border-2 border-black text-black' : 'bg-black border-2 border-white text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
+                  />
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-black text-black focus:ring-2 focus:ring-black' : 'w-[200px] bg-black border-white text-white focus:ring-2 focus:ring-white'}>
+                    <SelectValue placeholder="Category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category} value={category}>
+                        {category}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Button variant="secondary" className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
+                  <Filter className="w-4 h-4 mr-2" />
+                  Filters
+                </Button>
               </div>
             </div>
-            <div className="flex gap-4">
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-black text-black focus:ring-2 focus:ring-black' : 'w-[200px] bg-black border-white text-white focus:ring-2 focus:ring-white'}>
-                  <SelectValue placeholder="Category" />
-                </SelectTrigger>
-                <SelectContent>
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Button variant="secondary" className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
-                <Filter className="w-4 h-4 mr-2" />
-                Filters
-              </Button>
+            {/* Tags Section */}
+            <div className="mt-6">
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => toggleTag(tag)}
+                    className={`px-3 py-1 rounded-full text-sm font-medium border transition-all duration-150
+                      ${selectedTags.includes(tag)
+                        ? theme === 'light'
+                          ? 'bg-black text-white border-black scale-105 font-bold'
+                          : 'bg-white text-black border-white scale-105 font-bold'
+                        : theme === 'light'
+                          ? 'bg-white text-black border-black hover:bg-black hover:text-white hover:scale-105'
+                          : 'bg-black text-white border-white hover:bg-white hover:text-black hover:scale-105'
+                      }
+                    `}
+                  >
+                    <Tag className={theme === 'light' ? 'w-3 h-3 inline mr-1 text-black' : 'w-3 h-3 inline mr-1 text-white'} />
+                    {tag}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          {/* Tags Section */}
-          <div className="mt-6">
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => toggleTag(tag)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium border transition-all duration-150
-                    ${selectedTags.includes(tag)
-                      ? theme === 'light'
-                        ? 'bg-black text-white border-black scale-105 font-bold'
-                        : 'bg-white text-black border-white scale-105 font-bold'
-                      : theme === 'light'
-                        ? 'bg-white text-black border-black hover:bg-black hover:text-white hover:scale-105'
-                        : 'bg-black text-white border-white hover:bg-white hover:text-black hover:scale-105'
-                    }
-                  `}
+        </section>
+
+        {/* Gigs Grid */}
+        <section className="py-12 px-6 w-full mt-36">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {gigs.map((gig, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}
                 >
-                  <Tag className={theme === 'light' ? 'w-3 h-3 inline mr-1 text-black' : 'w-3 h-3 inline mr-1 text-white'} />
-                  {tag}
-                </button>
+                  <div className="overflow-hidden rounded-xl mb-4 border border-black dark:border-white">
+                    <img src={gig.image} alt={gig.title} className="w-full h-40 object-cover transition-transform duration-300 hover:scale-110" />
+                  </div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h2 className={theme === 'light' ? 'text-xl font-bold text-black' : 'text-xl font-bold text-white'}>{gig.title}</h2>
+                    <span className={theme === 'light' ? 'text-sm font-semibold text-black' : 'text-sm font-semibold text-white'}>{gig.salary}</span>
+                  </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}><MapPin className="inline w-4 h-4 mr-1" />{gig.location}</span>
+                    <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}><Clock className="inline w-4 h-4 mr-1" />{gig.type}</span>
+                    <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}>Posted: {gig.posted}</span>
+                  </div>
+                  <p className={theme === 'light' ? 'text-black' : 'text-white'}>{gig.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {gig.tags.map((tag) => (
+                      <span key={tag} className={theme === 'light' ? 'px-2 py-1 rounded-full text-xs font-medium bg-black text-white transition-transform duration-150 hover:scale-110' : 'px-2 py-1 rounded-full text-xs font-medium bg-white text-black transition-transform duration-150 hover:scale-110'}>{tag}</span>
+                    ))}
+                  </div>
+                  <Button className={theme === 'light' ? 'mt-4 bg-black text-white w-full transition-transform duration-200 hover:scale-105 hover:shadow-lg' : 'mt-4 bg-white text-black w-full transition-transform duration-200 hover:scale-105 hover:shadow-lg'}>
+                    View Details
+                  </Button>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Gigs Grid */}
-      <section className="py-12 px-6 w-full mt-36">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {gigs.map((gig, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}
-              >
-                <div className="overflow-hidden rounded-xl mb-4 border border-black dark:border-white">
-                  <img src={gig.image} alt={gig.title} className="w-full h-40 object-cover transition-transform duration-300 hover:scale-110" />
-                </div>
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className={theme === 'light' ? 'text-xl font-bold text-black' : 'text-xl font-bold text-white'}>{gig.title}</h2>
-                  <span className={theme === 'light' ? 'text-sm font-semibold text-black' : 'text-sm font-semibold text-white'}>{gig.salary}</span>
-                </div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}><MapPin className="inline w-4 h-4 mr-1" />{gig.location}</span>
-                  <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}><Clock className="inline w-4 h-4 mr-1" />{gig.type}</span>
-                  <span className={theme === 'light' ? 'text-xs text-black' : 'text-xs text-white'}>Posted: {gig.posted}</span>
-                </div>
-                <p className={theme === 'light' ? 'text-black' : 'text-white'}>{gig.description}</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {gig.tags.map((tag) => (
-                    <span key={tag} className={theme === 'light' ? 'px-2 py-1 rounded-full text-xs font-medium bg-black text-white transition-transform duration-150 hover:scale-110' : 'px-2 py-1 rounded-full text-xs font-medium bg-white text-black transition-transform duration-150 hover:scale-110'}>{tag}</span>
-                  ))}
-                </div>
-                <Button className={theme === 'light' ? 'mt-4 bg-black text-white w-full transition-transform duration-200 hover:scale-105 hover:shadow-lg' : 'mt-4 bg-white text-black w-full transition-transform duration-200 hover:scale-105 hover:shadow-lg'}>
-                  View Details
-                </Button>
-              </motion.div>
-            ))}
+        {/* Load More Section */}
+        <section className="py-12 px-6 w-full">
+          <div className="max-w-7xl mx-auto text-center">
+            <Button
+              variant="secondary"
+              className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
+            >
+              Load More Gigs
+            </Button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Load More Section */}
-      <section className="py-12 px-6 w-full">
-        <div className="max-w-7xl mx-auto text-center">
-          <Button
-            variant="secondary"
-            className={theme === 'light' ? 'border-black text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
-          >
-            Load More Gigs
-          </Button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={`w-full ${theme === 'light' ? 'bg-white' : 'bg-black'} border-t border-[#23272e] py-8 mt-auto flex gap-6`}>
-        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
-          <span className={`text-lg font-semibold ${theme === 'light' ? 'text-gray-700' : 'text-white'} tracking-wide mb-2`}>Assured Gig</span>
-          <span className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
-        </div>
-      </footer>
-    </div>
+        {/* Footer */}
+        <footer className={`w-full ${theme === 'light' ? 'bg-white' : 'bg-black'} border-t border-[#23272e] py-8 mt-auto flex gap-6`}>
+          <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
+            <span className={`text-lg font-semibold ${theme === 'light' ? 'text-gray-700' : 'text-white'} tracking-wide mb-2`}>Assured Gig</span>
+            <span className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 } 
