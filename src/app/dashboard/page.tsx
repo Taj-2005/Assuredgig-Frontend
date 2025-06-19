@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  Clock, TrendingUp, DollarSign, CheckCircle, AlertCircle,
-  Briefcase, Bell, Settings, Play, Pause, BarChart3,
+  Clock, TrendingUp, DollarSign, CheckCircle, Play, Pause, BarChart3,
   Activity, Zap, Target, Award
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
