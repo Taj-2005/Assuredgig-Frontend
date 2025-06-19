@@ -252,7 +252,7 @@ const FreelancePortfolio = () => {
           mounted && theme === 'dark' ? 'border-white bg-black' : 'border-black bg-white'
         )}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex flex-col justify-between md:flex-row gap-8">
               {/* Profile Info */}
               <div className="flex items-start gap-6">
                 <div className="relative">
