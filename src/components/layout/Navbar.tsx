@@ -50,7 +50,7 @@ export default function Navbar() {
           ? 'text-cyan-600 bg-cyan-50 shadow-sm'
           : 'text-gray-700 hover:text-cyan-500 hover:bg-cyan-50/50'
         : pathname === path
-          ? 'text-white bg-white/10 shadow-lg'
+          ? 'text-cyan-500 bg-white/10 shadow-lg'
           : 'text-gray-300 hover:text-cyan-400 hover:bg-white/5'
     );
   }, [theme, pathname]);
