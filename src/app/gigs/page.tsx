@@ -130,10 +130,10 @@ export default function GigsPage() {
               </div>
               <div className="flex gap-4">
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-black text-black focus:ring-2 focus:ring-black' : 'w-[200px] bg-black border-white text-white focus:ring-2 focus:ring-white'}>
+                  <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-black text-black focus:ring-2 focus:ring-black z-50' : 'w-[200px] bg-black border-white text-white focus:ring-2 focus:ring-white'}>
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className={theme === 'light'? 'bg-white' : 'bg-black text-white'}>
                     {categories.map((category) => (
                       <SelectItem key={category} value={category}>
                         {category}
