@@ -22,8 +22,7 @@ const categories = [
 
 const tags = [
   'React', 'TypeScript', 'Node.js', 'Python', 'Django', 'AWS',
-  'UI/UX', 'Figma', 'Adobe XD', 'Content Writing', 'SEO',
-  'Social Media', 'Data Analysis', 'Machine Learning'
+  'UI/UX', 'Figma', 'Adobe XD', 'SEO', 'Data Analysis', 'Machine Learning'
 ];
 
 const gigs = [
