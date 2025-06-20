@@ -302,7 +302,7 @@ export default function ContractsPage() {
                 e.preventDefault()
                 navigate.push('/')
               }}>
-                Go to Home
+                Back to Home
               </Button>
           </div>
           </div>

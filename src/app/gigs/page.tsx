@@ -105,16 +105,8 @@ export default function GigsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center"
+              className="text-center pt-5"
             >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-black mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black border border-white mb-8'}
-              >
-                <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-white'} />
-              </motion.div>
               <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Find Your Next <span className="text-black dark:text-white">Freelance Opportunity</span></h1>
               <p className={theme === 'light' ? 'text-lg sm:text-xl text-black max-w-2xl mx-auto mb-8' : 'text-lg sm:text-xl text-white max-w-2xl mx-auto mb-8'}>
                 Browse through our curated list of high-quality gigs and find the perfect match for your skills.

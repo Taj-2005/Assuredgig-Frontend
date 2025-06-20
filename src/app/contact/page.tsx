@@ -46,16 +46,8 @@ export default function ContactPage() {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/10 border border-black/20 mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-8'}
-              >
-                <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-blue-400'} />
-              </motion.div>
               
-              <h1 className={theme === 'light' ? 'text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6' : 'text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6'}>
+              <h1 className={ theme === 'light' ? 'text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6 pt-5' : 'text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 pt-5'}>
                 Get in
                 <span className={theme === 'light' ? 'bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent' : 'bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent'}> Touch</span>
               </h1>
