@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import {useRouter} from 'next/navigation'
 import { useTheme } from '@/context/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/Footer';
 
 const faqs = [
   {
@@ -252,15 +253,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className={theme === 'light' ? 'w-full bg-white border-t border-black/60 py-10 mt-auto' : 'w-full bg-black border-t border-blue-900/60 py-10 mt-auto'}>
-          <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
-            <span className={theme === 'light' ? 'text-xl font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent mb-2' : 'text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-2'}>Assured Gig</span>
-            <span className={theme === 'light' ? 'text-sm text-gray-700 mb-2' : 'text-sm text-gray-500 mb-2'}>Empowering Freelancers & Clients</span>
-            <span className={theme === 'light' ? 'text-xs text-gray-500' : 'text-xs text-gray-600'}>&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );

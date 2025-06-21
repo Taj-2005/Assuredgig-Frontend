@@ -9,6 +9,7 @@ import SolutionSection from '@/components/sections/SolutionSection';
 import GetStartedSection from '@/components/sections/GetStartedSection';
 import { useTheme } from "@/context/ThemeContext";
 import FaqSection from '@/components/sections/FaqSection';
+import Footer from '@/components/Footer';
 
 export default function HomePage() {
   const { theme } = useTheme();
@@ -64,6 +65,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

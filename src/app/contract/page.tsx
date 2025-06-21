@@ -296,15 +296,6 @@ export default function ContractsPage() {
                 <span className={`font-black text-3xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>12</span>
               </div>
             </div>
-            <div className = 'flex justify-end items-end'>
-              <Button variant="secondary" className="border-black text-white hover:bg-white hover:text-black transition-all duration-200 hover:scale-105 hover:shadow-md"
-              onClick = {(e) => {
-                e.preventDefault()
-                navigate.push('/')
-              }}>
-                Back to Home
-              </Button>
-          </div>
           </div>
         </section>
       </div>
