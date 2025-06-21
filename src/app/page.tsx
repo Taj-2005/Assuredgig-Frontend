@@ -8,6 +8,7 @@ import PainPointsSection from "@/components/sections/PainPoints";
 import SolutionSection from '@/components/sections/SolutionSection';
 import GetStartedSection from '@/components/sections/GetStartedSection';
 import { useTheme } from "@/context/ThemeContext";
+import FaqSection from '@/components/sections/FaqSection';
 
 export default function HomePage() {
   const { theme } = useTheme();
@@ -49,6 +50,7 @@ export default function HomePage() {
         <SolutionSection />
         <div className='lg:px-70'>
           <GetStartedSection />
+          <FaqSection />
         </div>
         <div className="my-16 w-full flex justify-center">
           <div
