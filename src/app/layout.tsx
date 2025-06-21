@@ -4,7 +4,7 @@ import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { ToastProvider } from '@/context/ToastContext';
 import { ThemeProvider } from '@/context/ThemeContext';
-import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,6 +35,7 @@ export default function RootLayout({
         <ThemeProvider>
           <AuthProvider>
             <ToastProvider>
+              <ScrollProgress />
               {children}
             </ToastProvider>
           </AuthProvider>
