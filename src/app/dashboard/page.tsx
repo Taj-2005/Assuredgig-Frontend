@@ -154,7 +154,7 @@ const FreelancerDashboard = () => {
             {/* Left Column: Contract Selector & Quick Stats */}
             <div className="md:col-span-1 flex flex-col gap-8">
               {/* Contract Selector Card */}
-              <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
+              <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
                 <h3 className={`text-lg font-semibold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 flex items-center gap-2`}>
                   <Target className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                   Active Contracts
@@ -168,7 +168,7 @@ const FreelancerDashboard = () => {
                         'p-4 rounded-xl cursor-pointer transition-all duration-300 border hover:scale-105 hover:shadow-lg',
                         activeContract === index
                           ? `${isDarkTheme ? 'bg-white text-black border-white shadow-md' : 'bg-gray-200 text-black border-gray-200 shadow-md'}` // Updated active state for light mode
-                          : `${isDarkTheme ? 'bg-black hover:bg-gray-800 text-white hover:text-white border-white' : 'bg-white text-black hover:bg-gray-200 hover:text-black border-gray-200'}` // Updated hover for light mode & dark mode
+                          : `${isDarkTheme ? 'bg-neutral-800 hover:bg-gray-800 text-white hover:text-white border-gray-600' : 'bg-white text-black hover:bg-gray-200 hover:text-black border-gray-200'}` // Updated hover for light mode & dark mode
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -193,14 +193,14 @@ const FreelancerDashboard = () => {
               </div>
               {/* Quick Stats Cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center gap-2 mb-2">
                     <Award className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Total Earned</span>
                   </div>
                   <AnimatedCounter value={28465} prefix="$" />
                 </div>
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center gap-2 mb-2">
                     <Activity className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Projects</span>
@@ -213,7 +213,7 @@ const FreelancerDashboard = () => {
             {/* Center Column: Main Contract Details */}
             <div className="md:col-span-2 flex flex-col gap-8">
               {/* Current Contract Header and Status */}
-              <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
+              <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className={`text-2xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2`}>{currentContract.title}</h2>
@@ -263,7 +263,7 @@ const FreelancerDashboard = () => {
               </div>
               {/* Financial Overview Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <DollarSign className={`w-6 h-6 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
@@ -275,7 +275,7 @@ const FreelancerDashboard = () => {
                     ${currentContract.budget.toLocaleString()}
                   </div>
                 </div>
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <CheckCircle className={`w-6 h-6 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
@@ -287,7 +287,7 @@ const FreelancerDashboard = () => {
                     ${currentContract.earned.toLocaleString()}
                   </div>
                 </div>
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <BarChart3 className={`w-6 h-6 ${isDarkTheme ? 'text-white' : 'text-black'}`} />

@@ -166,21 +166,21 @@ export default function ContractsPage() {
           <div className="max-w-7xl mx-auto grid gap-8">
             {/* Contracts List */}
             <div className="md:col-span-2 flex-col gap-8 grid">
-              <div className={theme === 'light' ? 'bg-white border border-gray-300 rounded-2xl p-6 transition-all duration-700 hover:scale-100 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-2xl'}>
+              <div className={theme === 'light' ? 'bg-white border border-gray-300 rounded-2xl p-6 transition-all duration-700 hover:scale-100 hover:shadow-2xl' : 'bg-neutral-900 border border-gray-800 rounded-2xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-2xl'}>
                 <h3 className={theme === 'light' ? 'text-lg font-semibold text-black mb-4 flex items-center gap-2' : 'text-lg font-semibold text-white mb-4 flex items-center gap-2'}>
                   <Target className={theme === 'light' ? 'w-5 h-5 text-black' : 'w-5 h-5 text-white'} />
                   Active Contracts
                 </h3>
                 <div className="space-y-3">
                   {contracts.map((contract) => (
-                    <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-gray-300 bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-white bg-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg text-white'}>
+                    <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-gray-300 bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-black bg-neutral-800 hover:bg-neutral-600  transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg text-white'}>
                       <div className="flex items-center justify-between">
                         <div>
                           <h4>{contract.title}</h4>
                           <p>{contract.client}</p>
                         </div>
                         <div className="text-right">
-                          <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black' : 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black'}>
+                          <div className={theme === 'light' ? 'text-xs px-2 py-1 rounded-full font-semibold bg-white text-black' : 'text-xs px-2 py-1 rounded-full font-semibold bg-neutral-900 text-white border-black'}>
                             {contract.progress}%
                           </div>
                         </div>
@@ -191,11 +191,11 @@ export default function ContractsPage() {
               </div>
               {/* Detailed Contract View */}
               {selected && (
-                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, type: 'spring' }} className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'}  rounded-lg p-10 transition-all duration-200 hover:scale-[1.01] hover:shadow-2xl`}>
+                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, type: 'spring' }} className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-gray-500'}  rounded-lg p-10 transition-all duration-200 hover:scale-[1.01] hover:shadow-2xl`}>
                   <h1 className={`text-3xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} text-center mb-10`}>{contractDetails.title}</h1>
                   <div className="grid md:grid-cols-2 gap-8 mb-10">
                     <div className="space-y-6">
-                      <div className={`${ theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+                      <div className={`${ theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                         <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Project Overview</h2>
                         <div className="space-y-3">
                           <div className="flex justify-between"><span className="text-black dark:text-white">Client</span><span className="text-black dark:text-white font-semibold">{contractDetails.client}</span></div>
@@ -203,12 +203,12 @@ export default function ContractsPage() {
                           <div className="flex justify-between"><span className="text-black dark:text-white">Budget</span><span className="text-black dark:text-white font-semibold">${contractDetails.budget}</span></div>
                         </div>
                       </div>
-                      <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+                      <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                         <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Time Remaining</h2>
                         <CountdownTimer date={contractDetails.deadline} />
                       </div>
                     </div>
-                    <div className={`${theme === 'dark' ? 'bg-black border border-white' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <div className={`${theme === 'dark' ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                       <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Progress</h2>
                       <div className="flex flex-col items-center">
                         <div className="relative">
@@ -224,15 +224,15 @@ export default function ContractsPage() {
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8 mb-10">
-                    <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                       <h2 className={`text-xl font-semibold text-black dark:text-white mb-4`}>Milestones</h2>
                       <ProgressTimeline milestones={contractDetails.milestones} />
                     </div>
-                    <div className={`${theme === 'dark' ?  'bg-black border border-white' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <div className={`${theme === 'dark' ?  'bg-neutral-900 border border-gray-600' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                       <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Work Log</h2>
                       <div className="space-y-4">
                         {contractDetails.workLog.map((log, idx) => (
-                          <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'dark' ? 'bg-black border border-white' : 'bg-white border border-black'} rounded-lg transition-all duration-150 hover:scale-105 hover:shadow-md`}>
+                          <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'dark' ? 'bg-neutral-800 border border-gray-700' : 'bg-white border border-black'} rounded-lg transition-all duration-150 hover:scale-105 hover:shadow-md`}>
                             <div className={`w-2 h-2 rounded-full ${log.status === 'completed' ? 'bg-green-500' : theme === 'light' ? 'bg-black' : 'bg-white'}`} />
                             <div className="flex-1">
                               <div className={` ${theme === 'dark' ? 'text-white' : 'text-black'} font-medium`}>{log.note}</div>
@@ -245,11 +245,11 @@ export default function ContractsPage() {
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
-                    <div className={`rounded-xl p-6 ${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} transition-all duration-200 hover:scale-105 hover:shadow-lg`}> 
+                    <div className={`rounded-xl p-6 ${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} transition-all duration-200 hover:scale-105 hover:shadow-lg`}> 
                       <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Recent Activity</h2>
                       <div className="space-y-4">
                         {contractDetails.recentActivity.map((activity, idx) => (
-                          <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white'} rounded-lg transition-all duration-150 hover:scale-105 hover:shadow-md`}>
+                          <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-800 border border-gray-800'} rounded-lg transition-all duration-150 hover:scale-105 hover:shadow-md`}>
                             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${activity.status === 'completed' ? 'bg-green-500' : theme === 'light' ? 'bg-black' : 'bg-white'}`}>
                               {activity.type === 'milestone' ? (<CheckCircle2 className="w-4 h-4 text-white" />) : activity.type === 'meeting' ? (<Calendar className="w-4 h-4 text-white" />) : (<FileText className="w-4 h-4 text-white" />)}
                             </div>
@@ -261,7 +261,7 @@ export default function ContractsPage() {
                         ))}
                       </div>
                     </div>
-                    <div className={`${theme === 'dark' ? 'bg-black border border-white' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+                    <div className={`${theme === 'dark' ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                       <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Quick Actions</h2>
                       <div className="grid grid-cols-2 gap-4">
                         <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-all duration-200 hover:scale-105 hover:shadow-md"><MessageSquare className="w-4 h-4 mr-2" />Open Chat</Button>
@@ -281,14 +281,14 @@ export default function ContractsPage() {
             </div>
             {/* Quick Stats */}
             <div className="flex flex-col gap-4">
-              <div className={`${theme === 'light' ? 'bg-white border border-gray-300' : 'bg-black border border-white' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+              <div className={`${theme === 'light' ? 'bg-white border border-gray-300' : 'bg-neutral-900 border border-gray-800' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Award className="w-5 h-5 text-black dark:text-white" />
                   <span className="text-sm text-black dark:text-white">Total Earned</span>
                 </div>
                 <span className={`font-black text-3xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>$28,465</span>
               </div>
-              <div className={` ${theme === 'light' ? 'bg-white border border-gray-300' : 'bg-black border border-white' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+              <div className={` ${theme === 'light' ? 'bg-white border border-gray-300' : 'bg-neutral-900 border border-gray-800' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Activity className="w-5 h-5 text-black dark:text-white" />
                   <span className="text-sm text-black dark:text-white">Projects</span>
