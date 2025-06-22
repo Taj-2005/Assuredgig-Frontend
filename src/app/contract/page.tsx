@@ -161,19 +161,19 @@ export default function ContractsPage() {
   return (
     <>
       <Navbar />
-      <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col pt-10' : 'min-h-screen w-full bg-black flex flex-col pt-20'}>
+      <div className={theme === 'light' ? 'min-h-screen w-full bg-gray-100 flex flex-col pt-10' : 'min-h-screen w-full bg-black flex flex-col pt-20'}>
         <section className="py-16 px-6 w-full">
           <div className="max-w-7xl mx-auto grid gap-8">
             {/* Contracts List */}
             <div className="md:col-span-2 flex-col gap-8 grid">
-              <div className={theme === 'light' ? 'bg-white border border-black rounded-2xl p-6 transition-all duration-700 hover:scale-100 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-2xl'}>
+              <div className={theme === 'light' ? 'bg-white border border-gray-300 rounded-2xl p-6 transition-all duration-700 hover:scale-100 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-2xl'}>
                 <h3 className={theme === 'light' ? 'text-lg font-semibold text-black mb-4 flex items-center gap-2' : 'text-lg font-semibold text-white mb-4 flex items-center gap-2'}>
                   <Target className={theme === 'light' ? 'w-5 h-5 text-black' : 'w-5 h-5 text-white'} />
                   Active Contracts
                 </h3>
                 <div className="space-y-3">
                   {contracts.map((contract) => (
-                    <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-black bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-white bg-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg text-white'}>
+                    <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-gray-300 bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-white bg-black hover:bg-white hover:text-black transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg text-white'}>
                       <div className="flex items-center justify-between">
                         <div>
                           <h4>{contract.title}</h4>
@@ -281,14 +281,14 @@ export default function ContractsPage() {
             </div>
             {/* Quick Stats */}
             <div className="flex flex-col gap-4">
-              <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+              <div className={`${theme === 'light' ? 'bg-white border border-gray-300' : 'bg-black border border-white' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Award className="w-5 h-5 text-black dark:text-white" />
                   <span className="text-sm text-black dark:text-white">Total Earned</span>
                 </div>
                 <span className={`font-black text-3xl ${theme === 'light' ? 'text-black' : 'text-white'}`}>$28,465</span>
               </div>
-              <div className={` ${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-white' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
+              <div className={` ${theme === 'light' ? 'bg-white border border-gray-300' : 'bg-black border border-white' } rounded-2xl p-4 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Activity className="w-5 h-5 text-black dark:text-white" />
                   <span className="text-sm text-black dark:text-white">Projects</span>
