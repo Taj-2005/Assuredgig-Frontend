@@ -121,19 +121,19 @@ export default function GigsPage() {
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
                 <div className="relative">
-                  <Search className={theme === 'light' ? 'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500' : 'absolute left-3 top-1/2 transform -translate-y-1/2 text-white'} />
+                  <Search className={theme === 'light' ? 'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500' : 'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'} />
                   <Input
                     placeholder="Search gigs..."
-                    className={`pl-10 ${ theme === 'light' ? 'bg-white border-gray-200 text-black' : 'bg-black border-2 border-white text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
+                    className={`pl-10 ${ theme === 'light' ? 'bg-white border-gray-200 text-black' : 'bg-black border-2 border-gray-500 text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
                   />
                 </div>
               </div>
               <div className="flex gap-4">
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-gray-200 text-black focus:ring-2 focus:ring-black z-50' : 'w-[200px] bg-black border-white text-white focus:ring-2 focus:ring-white'}>
+                  <SelectTrigger className={theme === 'light' ? 'w-[200px] bg-white border-gray-200 text-black focus:ring-2 focus:ring-black z-50' : 'w-[200px] bg-black border-gray-500 text-gray-400 focus:ring-2 focus:ring-white'}>
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
-                  <SelectContent className={theme === 'light'? 'bg-white border-gray-200' : 'bg-black text-white'}>
+                  <SelectContent className={theme === 'light'? 'bg-white border-gray-200' : 'bg-black text-gray-400'}>
                     {categories.map((category) => (
                       <SelectItem key={category} value={category}>
                         {category}
@@ -141,7 +141,7 @@ export default function GigsPage() {
                     ))}
                   </SelectContent>
                 </Select>
-                <Button variant="secondary" className={theme === 'light' ? 'border-gray-200 text-black hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105 bg-white' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
+                <Button variant="secondary" className={theme === 'light' ? 'border-gray-200 text-black hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105 bg-white' : 'border-gray-500 text-gray-400 hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}>
                   <Filter className="w-4 h-4 mr-2" />
                   Filters
                 </Button>
@@ -158,14 +158,14 @@ export default function GigsPage() {
                       ${selectedTags.includes(tag)
                         ? theme === 'light'
                           ? 'bg-black text-white border-gray-200 scale-105 font-bold'
-                          : 'bg-white text-black border-white scale-105 font-bold'
+                          : 'bg-white text-black border-gray-500 scale-105 font-bold'
                         : theme === 'light'
                           ? 'bg-white text-black border-gray-200 hover:bg-black hover:text-white hover:scale-105'
-                          : 'bg-black text-white border-white hover:bg-white hover:text-black hover:scale-105'
+                          : 'bg-black text-gray-400 border-gray-500 hover:bg-white hover:text-black hover:scale-105'
                       }
                     `}
                   >
-                    <Tag className={theme === 'light' ? 'w-3 h-3 inline mr-1 text-black' : 'w-3 h-3 inline mr-1 text-white'} />
+                    <Tag className={theme === 'light' ? 'w-3 h-3 inline mr-1 text-black' : 'w-3 h-3 inline mr-1 text-gray-400'} />
                     {tag}
                   </button>
                 ))}
@@ -185,9 +185,9 @@ export default function GigsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={theme === 'light' ? 'bg-white border border-gray-200 rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-black border border-white rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}
+                  className={theme === 'light' ? 'bg-white border border-gray-200 rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl' : 'bg-neutral-800 border border-black rounded-2xl p-6 flex flex-col gap-4 transition-transform duration-200 hover:scale-105 hover:shadow-2xl'}
                 >
-                  <div className="overflow-hidden rounded-xl mb-4 border border-gray-200 dark:border-white">
+                  <div className="overflow-hidden rounded-xl mb-4 border border-gray-200 dark:border-gray-500">
                     <img src={gig.image} alt={gig.title} className="w-full h-40 object-cover transition-transform duration-300 hover:scale-110" />
                   </div>
                   <div className="flex items-center justify-between mb-2">
@@ -219,7 +219,7 @@ export default function GigsPage() {
           <div className="max-w-7xl mx-auto text-center">
             <Button
               variant="secondary"
-              className={theme === 'light' ? 'border-gray-200 text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-white text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
+              className={theme === 'light' ? 'border-gray-200 text-white hover:bg-black hover:text-white transition-transform duration-200 hover:scale-105' : 'border-gray-500 text-white hover:bg-white hover:text-black transition-transform duration-200 hover:scale-105'}
             >
               Load More Gigs
             </Button>
