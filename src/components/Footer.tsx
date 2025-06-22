@@ -17,7 +17,7 @@ export default function Footer() {
   if (!hasMounted) return null;
 
   return (
-    <section className={`${theme === 'dark' ? 'bg-black border-gray-800 text-gray-400' : 'bg-white border-gray-200 text-gray-600'} border-t`}>
+    <section className={`${theme === 'dark' ? 'bg-black border-gray-800 text-gray-400' : 'bg-gray-100 border-gray-300 text-gray-600'} border-t`}>
       <footer>
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-5 gap-10 text-sm">
           

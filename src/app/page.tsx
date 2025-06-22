@@ -27,7 +27,7 @@ export default function HomePage() {
     <main
       className={
         theme === "light"
-          ? "min-h-screen w-full bg-white flex flex-col"
+          ? "min-h-screen w-full bg-gray-100 flex flex-col"
           : "min-h-screen w-full bg-black flex flex-col"
       }
     >
@@ -57,7 +57,7 @@ export default function HomePage() {
           <div
             className={
               theme === "light"
-                ? "rounded-2xl w-full max-w-2xl bg-white text-black"
+                ? "rounded-2xl w-full max-w-2xl bg-gray-100 text-black"
                 : "text-white rounded-2xl shadow-xl w-full max-w-2xl bg-transparent"
             }
           >

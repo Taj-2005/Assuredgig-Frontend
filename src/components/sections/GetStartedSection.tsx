@@ -22,7 +22,7 @@ export default function GetStartedSection() {
   },
 ];
   return (
-    <section className={`w-full py-24 px-4 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
+    <section className={`w-full py-24 px-4 ${theme === 'light' ? 'bg-gray-100' : 'bg-black'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <div className="text-sm font-bold text-cyan-500 tracking-widest mb-3 uppercase">HOW IT WORKS</div>

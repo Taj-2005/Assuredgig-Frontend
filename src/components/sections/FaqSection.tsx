@@ -36,7 +36,7 @@ export default function FaqSection() {
   const toggle = (i: number) => setOpenIndex(i === openIndex ? null : i);
 
   return (
-    <section className={`flex flex-col items-center justify-center w-full py-24 px-4 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
+    <section className={`flex flex-col items-center justify-center w-full py-24 px-4 ${theme === 'light' ? 'bg-gray-100' : 'bg-black'}`}>
       <div className="text-sm font-bold text-cyan-500 tracking-widest mb-3 uppercase">
         FAQ
       </div>
