@@ -15,7 +15,7 @@ export default function TypewriterEffectSmoothDemo() {
     { text: "Freelancing", className: "gradient-text" },
   ];
   return (
-    <div className={`flex flex-col items-center justify-center h-[40rem]`}>
+    <div className={`flex flex-col items-center justify-center py-28`}>
       <p className={theme === "light" ? "text-gray-500 text-xs sm:text-base" : "text-neutral-600 dark:text-neutral-200 text-xs sm:text-base"}>
         The road to freedom starts from here
       </p>
