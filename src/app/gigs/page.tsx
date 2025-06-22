@@ -37,7 +37,7 @@ const gigs = [
     tags: ['React', 'TypeScript', 'Node.js'],
     posted: '2 days ago',
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1672307974995-cd253f7f7eeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'UI/UX Designer',
@@ -49,7 +49,7 @@ const gigs = [
     tags: ['Figma', 'Adobe XD', 'UI Design'],
     posted: '1 day ago',
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2064&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1621111848501-8d3634f82336?q=80&w=2165&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Backend Developer',
@@ -61,7 +61,7 @@ const gigs = [
     tags: ['Python', 'Django', 'AWS'],
     posted: '3 days ago',
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://plus.unsplash.com/premium_photo-1661371243525-d02768a7feee?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Mobile App Developer',
@@ -73,7 +73,7 @@ const gigs = [
     tags: ['React Native', 'iOS', 'Android'],
     posted: '1 week ago',
     rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://plus.unsplash.com/premium_photo-1719839720591-d43eb07de1da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
 
