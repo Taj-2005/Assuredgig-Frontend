@@ -37,7 +37,7 @@ export default function PainPointsSection() {
     },
   ];
   return (
-    <section className={`w-full py-20 px-4 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}>
+    <section className={`w-full py-20 px-4 ${theme === 'light' ? 'bg-gray-100' : 'bg-black'}`}>
       <div className="max-w-7xl mx-auto lg:px-40">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

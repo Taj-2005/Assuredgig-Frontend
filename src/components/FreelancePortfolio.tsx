@@ -171,13 +171,13 @@ const FreelancePortfolio = () => {
     <button
       onClick={() => onClick(id)}
       className={cn(
-        'px-6 py-3 font-medium transition-all duration-200 border-b-2',
+        'px-6 py-3 font-medium transition-all duration-200 border-b-2 my-1',
         mounted && theme === 'dark'
           ? isActive
             ? 'text-white border-white'
             : 'text-gray-400 border-transparent hover:text-white hover:border-gray-600'
           : isActive
-            ? 'text-black border-black'
+            ? 'text-black border-gray-200 bg-white rounded-2xl'
             : 'text-gray-600 border-transparent hover:text-black hover:border-gray-300'
       )}
     >
@@ -190,7 +190,7 @@ const FreelancePortfolio = () => {
       'group flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200',
       mounted && theme === 'dark'
         ? 'bg-black border-white hover:bg-white hover:text-black'
-        : 'bg-white border-black hover:bg-[#fef7f1] hover:text-black'
+        : 'bg-white border-gray-200 hover:bg-[#fef7f1] hover:text-black'
     )}>
       <div className={cn(
         'p-1 rounded',
@@ -243,13 +243,13 @@ const FreelancePortfolio = () => {
       <Navbar />
       <div className={cn(
         'min-h-screen w-full flex flex-col pt-28',
-        mounted && theme === 'dark' ? 'bg-black' : 'bg-white'
+        mounted && theme === 'dark' ? 'bg-black' : 'bg-gray-100'
       )}>
 
         {/* Profile Header */}
         <section className={cn(
-          'border-b py-8',
-          mounted && theme === 'dark' ? 'border-white bg-black' : 'border-black bg-white'
+          'border-b py-8 mx-20 rounded-2xl',
+          mounted && theme === 'dark' ? 'border-gray-200 bg-black' : 'border-gray-200 bg-white'
         )}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col justify-between md:flex-row gap-8">
@@ -368,7 +368,7 @@ const FreelancePortfolio = () => {
         {/* Navigation Tabs */}
         <section className={cn(
           'border-b',
-          mounted && theme === 'dark' ? 'border-white bg-black' : 'border-black bg-white'
+          mounted && theme === 'dark' ? 'border-white bg-black' : 'border-gray-200 bg-gray-100'
         )}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex space-x-8">
@@ -406,7 +406,7 @@ const FreelancePortfolio = () => {
                     'rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                     mounted && theme === 'dark'
                       ? 'bg-black border border-white' 
-                      : 'bg-white border border-black'
+                      : 'bg-white border border-gray-200'
                   )}>
                     <h3 className={cn(
                       'text-xl font-semibold mb-4',
@@ -427,7 +427,7 @@ const FreelancePortfolio = () => {
                     'rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                     mounted && theme === 'dark'
                       ? 'bg-black border border-white' 
-                      : 'bg-white border border-black'
+                      : 'bg-white border border-gray-200'
                   )}>
                     <h3 className={cn(
                       'text-xl font-semibold mb-6',
@@ -447,7 +447,7 @@ const FreelancePortfolio = () => {
                     'rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                     mounted && theme === 'dark'
                       ? 'bg-black border border-white' 
-                      : 'bg-white border border-black'
+                      : 'bg-white border border-gray-200'
                   )}>
                     <h3 className={cn(
                       'text-xl font-semibold mb-4',
@@ -498,7 +498,7 @@ const FreelancePortfolio = () => {
                         'rounded-2xl overflow-hidden transition-all duration-200 hover:scale-105 hover:shadow-2xl',
                         mounted && theme === 'dark'
                           ? 'bg-black border border-white hover:border-gray-600' 
-                          : 'bg-white border border-black hover:border-gray-300'
+                          : 'bg-white border border-gray-200 hover:border-gray-300'
                       )}>
                         <img
                           src={project.image}
@@ -594,7 +594,7 @@ const FreelancePortfolio = () => {
                         'rounded-2xl p-5 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                         mounted && theme === 'dark'
                           ? 'bg-black border border-white' 
-                          : 'bg-white border border-black'
+                          : 'bg-white border border-gray-200'
                       )}>
                         <div className="flex items-start gap-4">
                           <img
@@ -649,7 +649,7 @@ const FreelancePortfolio = () => {
                 'rounded-2xl p-5 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                 mounted && theme === 'dark'
                   ? 'bg-black border border-white' 
-                  : 'bg-white border border-black'
+                  : 'bg-white border border-gray-200'
               )}>
                 <h3 className={cn(
                   'font-semibold mb-4',
@@ -718,7 +718,7 @@ const FreelancePortfolio = () => {
                 'rounded-2xl p-5 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                 mounted && theme === 'dark'
                   ? 'bg-black border border-white' 
-                  : 'bg-white border border-black'
+                  : 'bg-white border border-gray-200'
               )}>
                 <h3 className={cn(
                   'font-semibold mb-4',
@@ -759,7 +759,7 @@ const FreelancePortfolio = () => {
                 'rounded-2xl p-5 transition-transform duration-200 hover:scale-105 hover:shadow-2xl',
                 mounted && theme === 'dark'
                   ? 'bg-black border border-white' 
-                  : 'bg-white border border-black'
+                  : 'bg-white border border-gray-200'
               )}>
                 <h3 className={cn(
                   'font-semibold mb-4',
