@@ -53,12 +53,12 @@ export default function HomePage() {
           <GetStartedSection />
           <FaqSection />
         </div>
-        <div className="my-16 w-full flex justify-center">
+        <div className="w-full flex justify-center">
           <div
             className={
               theme === "light"
-                ? "rounded-2xl p-8 w-full max-w-2xl bg-white text-black"
-                : "text-white rounded-2xl shadow-xl p-8 w-full max-w-2xl bg-transparent"
+                ? "rounded-2xl w-full max-w-2xl bg-white text-black"
+                : "text-white rounded-2xl shadow-xl w-full max-w-2xl bg-transparent"
             }
           >
             <TypewriterEffectSmoothDemo />
