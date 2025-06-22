@@ -78,6 +78,8 @@ const gigs = [
 ];
 
 export default function GigsPage() {
+  const [searchText, setSearchText] = useState('');
+  const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const navigate = useRouter()
@@ -123,9 +125,55 @@ export default function GigsPage() {
                 <div className="relative">
                   <Search className={theme === 'light' ? 'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500' : 'absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400'} />
                   <Input
+                    value={searchText}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setSearchText(value);
+
+                      const matched = categories.filter(category =>
+                        category.toLowerCase().startsWith(value.toLowerCase()) && value.trim() !== ''
+                      );
+
+                      setFilteredCategories(matched);
+                    }}
                     placeholder="Search gigs..."
-                    className={`pl-10 ${ theme === 'light' ? 'bg-white border-gray-200 text-black' : 'bg-black border-2 border-gray-500 text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
+                    className={`pl-10 ${theme === 'light' ? 'bg-white border-gray-200 text-black' : 'bg-black border-2 border-gray-500 text-white'} placeholder:text-gray-400 focus:ring-2 focus:ring-black dark:focus:ring-white`}
                   />
+                  {searchText && (
+                      <div
+                        className={`absolute top-full left-0 w-full mt-2 z-50 rounded-md shadow-lg ${
+                          theme === 'light' ? 'bg-white border border-gray-200' : 'bg-neutral-900 border border-gray-700'
+                        }`}
+                      >
+                        {filteredCategories.length > 0 ? (
+                          filteredCategories.map((category, index) => (
+                            <div
+                              key={index}
+                              className={`px-4 py-2 cursor-pointer ${
+                                theme === 'light'
+                                  ? 'hover:bg-gray-100 text-black'
+                                  : 'hover:bg-gray-800 text-white'
+                              }`}
+                              onClick={() => {
+                                setSearchText(category);
+                                setSelectedCategory(category);
+                                setFilteredCategories([]);
+                              }}
+                            >
+                              {category}
+                            </div>
+                          ))
+                        ) : (
+                          <div
+                            className={`px-4 py-2 ${
+                              theme === 'light' ? 'text-gray-500' : 'text-gray-400'
+                            }`}
+                          >
+                            No results found
+                          </div>
+                        )}
+                      </div>
+                    )}
                 </div>
               </div>
               <div className="flex gap-4">
@@ -145,30 +193,6 @@ export default function GigsPage() {
                   <Filter className="w-4 h-4 mr-2" />
                   Filters
                 </Button>
-              </div>
-            </div>
-            {/* Tags Section */}
-            <div className="mt-6">
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1 rounded-full text-sm font-medium border transition-all duration-150
-                      ${selectedTags.includes(tag)
-                        ? theme === 'light'
-                          ? 'bg-black text-white border-gray-200 scale-105 font-bold'
-                          : 'bg-white text-black border-gray-500 scale-105 font-bold'
-                        : theme === 'light'
-                          ? 'bg-white text-black border-gray-200 hover:bg-black hover:text-white hover:scale-105'
-                          : 'bg-black text-gray-400 border-gray-500 hover:bg-white hover:text-black hover:scale-105'
-                      }
-                    `}
-                  >
-                    <Tag className={theme === 'light' ? 'w-3 h-3 inline mr-1 text-black' : 'w-3 h-3 inline mr-1 text-gray-400'} />
-                    {tag}
-                  </button>
-                ))}
               </div>
             </div>
           </div>
