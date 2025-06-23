@@ -155,7 +155,6 @@ const ProgressTimeline = ({ milestones }: { milestones: typeof contractDetails.m
 };
 
 export default function ContractsPage() {
-  const [selected, setSelected] = useState<number | null>(null);
   const navigate = useRouter()
   const { theme } = useTheme();
   return (
@@ -173,7 +172,7 @@ export default function ContractsPage() {
                 </h3>
                 <div className="space-y-3">
                   {contracts.map((contract) => (
-                    <button key={contract.id} onClick={() => setSelected(contract.id)} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-gray-300 bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-black bg-neutral-800 hover:bg-neutral-600  transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg text-white'}>
+                    <button key={contract.id} onClick={() => navigate.push('/dashboard')} className={theme === 'light' ? 'block w-full text-left p-4 rounded-xl border border-gray-300 bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg text-black' : 'block w-full text-left p-4 rounded-xl border border-black bg-neutral-800 hover:bg-neutral-600  transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg text-white'}>
                       <div className="flex items-center justify-between">
                         <div>
                           <h4>{contract.title}</h4>
@@ -189,95 +188,7 @@ export default function ContractsPage() {
                   ))}
                 </div>
               </div>
-              {/* Detailed Contract View */}
-              {selected && (
-                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, type: 'spring' }} className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-black border border-gray-500'}  rounded-lg p-10 transition-all duration-200 hover:scale-[1.01] hover:shadow-2xl`}>
-                  <h1 className={`text-3xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} text-center mb-10`}>{contractDetails.title}</h1>
-                  <div className="grid md:grid-cols-2 gap-8 mb-10">
-                    <div className="space-y-6">
-                      <div className={`${ theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
-                        <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Project Overview</h2>
-                        <div className="space-y-3">
-                          <div className="flex justify-between"><span className="text-black dark:text-white">Client</span><span className="text-black dark:text-white font-semibold">{contractDetails.client}</span></div>
-                          <div className="flex justify-between"><span className="text-black dark:text-white">Freelancer</span><span className="text-black dark:text-white font-semibold">{contractDetails.freelancer}</span></div>
-                          <div className="flex justify-between"><span className="text-black dark:text-white">Budget</span><span className="text-black dark:text-white font-semibold">${contractDetails.budget}</span></div>
-                        </div>
-                      </div>
-                      <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
-                        <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Time Remaining</h2>
-                        <CountdownTimer date={contractDetails.deadline} />
-                      </div>
-                    </div>
-                    <div className={`${theme === 'dark' ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
-                      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Progress</h2>
-                      <div className="flex flex-col items-center">
-                        <div className="relative">
-                          <svg className="transform -rotate-90" width={120} height={120}>
-                            <circle cx={60} cy={60} r={52} stroke={theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'} strokeWidth={8} fill="transparent" />
-                            <circle cx={60} cy={60} r={52} stroke={theme === 'light' ? '#111' : '#3b82f6'} strokeWidth={8} fill="transparent" strokeDasharray={`${2 * Math.PI * 52} ${2 * Math.PI * 52}`} strokeDashoffset={(2 * Math.PI * 52) - (contractDetails.percentComplete / 100) * (2 * Math.PI * 52)} strokeLinecap="round" className="transition-all duration-1000 ease-out" />
-                          </svg>
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-2xl font-bold text-black dark:text-white">{contractDetails.percentComplete}%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-8 mb-10">
-                    <div className={`${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
-                      <h2 className={`text-xl font-semibold text-black dark:text-white mb-4`}>Milestones</h2>
-                      <ProgressTimeline milestones={contractDetails.milestones} />
-                    </div>
-                    <div className={`${theme === 'dark' ?  'bg-neutral-900 border border-gray-600' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
-                      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Work Log</h2>
-                      <div className="space-y-4">
-                        {contractDetails.workLog.map((log, idx) => (
-                          <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'dark' ? 'bg-neutral-800 border border-gray-700' : 'bg-white border border-black'} rounded-lg transition-all duration-150 hover:scale-105 hover:shadow-md`}>
-                            <div className={`w-2 h-2 rounded-full ${log.status === 'completed' ? 'bg-green-500' : theme === 'light' ? 'bg-black' : 'bg-white'}`} />
-                            <div className="flex-1">
-                              <div className={` ${theme === 'dark' ? 'text-white' : 'text-black'} font-medium`}>{log.note}</div>
-                              <div className="text-sm text-black dark:text-white">{log.date}</div>
-                            </div>
-                            <div className="text-black dark:text-white font-semibold">{log.hours}h</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className={`rounded-xl p-6 ${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-900 border border-gray-600'} transition-all duration-200 hover:scale-105 hover:shadow-lg`}> 
-                      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Recent Activity</h2>
-                      <div className="space-y-4">
-                        {contractDetails.recentActivity.map((activity, idx) => (
-                          <div key={idx} className={`flex items-center gap-4 p-3 ${theme === 'light' ? 'bg-white border border-black' : 'bg-neutral-800 border border-gray-800'} rounded-lg transition-all duration-150 hover:scale-105 hover:shadow-md`}>
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${activity.status === 'completed' ? 'bg-green-500' : theme === 'light' ? 'bg-black' : 'bg-white'}`}>
-                              {activity.type === 'milestone' ? (<CheckCircle2 className="w-4 h-4 text-white" />) : activity.type === 'meeting' ? (<Calendar className="w-4 h-4 text-white" />) : (<FileText className="w-4 h-4 text-white" />)}
-                            </div>
-                            <div className="flex-1">
-                              <div className={`${theme === 'light' ? 'text-black' : 'text-white'} font-medium`}>{activity.title}</div>
-                              <div className="text-sm text-black dark:text-white">{activity.date}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={`${theme === 'dark' ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-black'} rounded-xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg`}>
-                      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Quick Actions</h2>
-                      <div className="grid grid-cols-2 gap-4">
-                        <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-all duration-200 hover:scale-105 hover:shadow-md"><MessageSquare className="w-4 h-4 mr-2" />Open Chat</Button>
-                        <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-all duration-200 hover:scale-105 hover:shadow-md"><Calendar className="w-4 h-4 mr-2" />Schedule Meeting</Button>
-                        <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-all duration-200 hover:scale-105 hover:shadow-md"><FileText className="w-4 h-4 mr-2" />Update Progress</Button>
-                        <Button className="w-full bg-black text-white h-12 border border-white dark:border-black transition-all duration-200 hover:scale-105 hover:shadow-md"><Award className="w-4 h-4 mr-2" />Add Milestone</Button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-10 flex justify-center">
-                    <Link href="/dashboard">
-                      <Button className="bg-black text-white px-8 py-3 text-lg font-semibold border border-white dark:border-black transition-all duration-200 hover:scale-105 hover:shadow-lg">Take me to dashboard</Button>
-                    </Link>
-                  </div>
-                </motion.div>
-              )}
+
             </div>
             {/* Quick Stats */}
             <div className="flex flex-col gap-4">
