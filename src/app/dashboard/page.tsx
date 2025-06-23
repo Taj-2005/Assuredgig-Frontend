@@ -303,7 +303,7 @@ const FreelancerDashboard = () => {
               {/* Task & Budget Progress Bars */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Task Progress Bar */}
-                <div className="transition-transform duration-150 hover:scale-105 hover:shadow-md py-3 px-6 rounded-md">
+                <div className="transition-transform duration-150 py-3 px-6 rounded-md">
                   <div className="flex justify-between items-center mb-2">
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Task Completion</span>
                     <span className={`text-sm font-medium ${isDarkTheme ? 'text-white' : 'text-black'}`}>
@@ -321,7 +321,7 @@ const FreelancerDashboard = () => {
                   </p>
                 </div>
                 {/* Budget Progress Bar */}
-                <div className="transition-transform duration-150 hover:scale-105 hover:shadow-md py-3 px-6 rounded-md">
+                <div className="transition-transform duration-150 py-3 px-6 rounded-md">
                   <div className="flex justify-between items-center mb-2">
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Budget Utilized</span>
                     <span className={`text-sm font-medium ${isDarkTheme ? 'text-white' : 'text-black'}`}>
