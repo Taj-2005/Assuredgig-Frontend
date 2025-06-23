@@ -27,7 +27,7 @@ export default function AnimatedBeamMultipleOutputDemo({ className }: AnimatedBe
             className={cn(
               "p-3 rounded-lg flex items-center gap-2",
               output.color,
-              "text-white"
+              theme == 'light' ? "text-black" : "text-white"
             )}
           >
             <div className="w-2 h-2 rounded-full bg-white/50" />
