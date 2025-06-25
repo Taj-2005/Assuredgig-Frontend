@@ -94,7 +94,7 @@ const FreelancerDashboard = () => {
             cx={size / 2}
             cy={size / 2}
             r={radius}
-            stroke={isDarkTheme ? 'url(#blue-gradient)' : 'black'}
+            stroke={isDarkTheme ? 'rgb(34, 211, 238)' : 'rgb(34, 211, 238)'}
             strokeWidth={strokeWidth}
             fill="transparent"
             strokeDasharray={strokeDasharray}
@@ -154,7 +154,7 @@ const FreelancerDashboard = () => {
             {/* Left Column: Contract Selector & Quick Stats */}
             <div className="md:col-span-1 flex flex-col gap-8">
               {/* Contract Selector Card */}
-              <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
+              <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
                 <h3 className={`text-lg font-semibold ${isDarkTheme ? 'text-white' : 'text-black'} mb-4 flex items-center gap-2`}>
                   <Target className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                   Active Contracts
@@ -168,7 +168,7 @@ const FreelancerDashboard = () => {
                         'p-4 rounded-xl cursor-pointer transition-all duration-300 border hover:scale-105 hover:shadow-lg',
                         activeContract === index
                           ? `${isDarkTheme ? 'bg-white text-black border-white shadow-md' : 'bg-gray-200 text-black border-gray-200 shadow-md'}` // Updated active state for light mode
-                          : `${isDarkTheme ? 'bg-black hover:bg-gray-800 text-white hover:text-white border-white' : 'bg-white text-black hover:bg-gray-200 hover:text-black border-gray-200'}` // Updated hover for light mode & dark mode
+                          : `${isDarkTheme ? 'bg-neutral-800 hover:bg-gray-800 text-white hover:text-white border-gray-600' : 'bg-white text-black hover:bg-gray-200 hover:text-black border-gray-200'}` // Updated hover for light mode & dark mode
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -193,14 +193,14 @@ const FreelancerDashboard = () => {
               </div>
               {/* Quick Stats Cards */}
               <div className="grid grid-cols-2 gap-4">
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center gap-2 mb-2">
                     <Award className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Total Earned</span>
                   </div>
                   <AnimatedCounter value={28465} prefix="$" />
                 </div>
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-4 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center gap-2 mb-2">
                     <Activity className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Projects</span>
@@ -213,7 +213,7 @@ const FreelancerDashboard = () => {
             {/* Center Column: Main Contract Details */}
             <div className="md:col-span-2 flex flex-col gap-8">
               {/* Current Contract Header and Status */}
-              <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
+              <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-2xl`}>
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className={`text-2xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'} mb-2`}>{currentContract.title}</h2>
@@ -253,47 +253,47 @@ const FreelancerDashboard = () => {
                           </div>
                         ))}
                       </div>
-                      <Button onClick={() => setIsTimerRunning(!isTimerRunning)} className={`mt-4 px-6 py-2 ${isDarkTheme ? 'bg-black text-white border border-white' : 'bg-white text-black border border-black'} transition-transform duration-200 hover:scale-105 hover:shadow-md`}>
+                      <button onClick={() => setIsTimerRunning(!isTimerRunning)} className={`flex justify-center items-center gap-2 mt-4 px-6 py-2 rounded-md border-1 border-gray-200 ${isDarkTheme ? 'bg-cyan-400 text-white border border-white' : 'bg-cyan-400 text-white border border-black'} transition-transform duration-200 hover:scale-105 hover:shadow-md`}>
                         {isTimerRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                         {isTimerRunning ? 'Pause Timer' : 'Start Timer'}
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
               {/* Financial Overview Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <DollarSign className={`w-6 h-6 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                       <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Total Budget</span>
                     </div>
-                    <TrendingUp className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
+                    <TrendingUp className={`w-5 h-5 ${isDarkTheme ? 'text-cyan-400' : 'text-cyan-400'}`} />
                   </div>
                   <div className={`text-2xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'}`}>
                     ${currentContract.budget.toLocaleString()}
                   </div>
                 </div>
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <CheckCircle className={`w-6 h-6 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                       <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Earned</span>
                     </div>
-                    <Zap className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
+                    <Zap className={`w-5 h-5 ${isDarkTheme ? 'text-cyan-400' : 'text-cyan-400'}`} />
                   </div>
                   <div className={`text-2xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'}`}>
                     ${currentContract.earned.toLocaleString()}
                   </div>
                 </div>
-                <div className={`${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
+                <div className={`${isDarkTheme ? 'bg-neutral-900 border border-gray-600' : 'bg-white border border-gray-200'} rounded-2xl p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg`}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <BarChart3 className={`w-6 h-6 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
                       <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Progress</span>
                     </div>
-                    <TrendingUp className={`w-5 h-5 ${isDarkTheme ? 'text-white' : 'text-black'}`} />
+                    <TrendingUp className={`w-5 h-5 ${isDarkTheme ? 'text-cyan-400' : 'text-cyan-400'}`} />
                   </div>
                   <div className={`text-2xl font-bold ${isDarkTheme ? 'text-white' : 'text-black'}`}>
                     {Math.round((currentContract.tasks.completed / currentContract.tasks.total) * 100)}%
@@ -303,7 +303,7 @@ const FreelancerDashboard = () => {
               {/* Task & Budget Progress Bars */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Task Progress Bar */}
-                <div className="transition-transform duration-150 hover:scale-105 hover:shadow-md">
+                <div className="transition-transform duration-150 py-3 px-6 rounded-md">
                   <div className="flex justify-between items-center mb-2">
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Task Completion</span>
                     <span className={`text-sm font-medium ${isDarkTheme ? 'text-white' : 'text-black'}`}>
@@ -312,7 +312,7 @@ const FreelancerDashboard = () => {
                   </div>
                   <div className={`w-full ${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-full h-3`}>
                     <div
-                      className={`h-3 rounded-full ${isDarkTheme ? 'bg-white' : 'bg-black'} transition-all`}
+                      className={`h-3 rounded-full ${isDarkTheme ? 'bg-cyan-400' : 'bg-cyan-500'} transition-all`}
                       style={{ width: `${(currentContract.tasks.completed / currentContract.tasks.total) * 100}%` }}
                     />
                   </div>
@@ -321,7 +321,7 @@ const FreelancerDashboard = () => {
                   </p>
                 </div>
                 {/* Budget Progress Bar */}
-                <div className="transition-transform duration-150 hover:scale-105 hover:shadow-md">
+                <div className="transition-transform duration-150 py-3 px-6 rounded-md">
                   <div className="flex justify-between items-center mb-2">
                     <span className={`text-sm ${isDarkTheme ? 'text-white' : 'text-black'}`}>Budget Utilized</span>
                     <span className={`text-sm font-medium ${isDarkTheme ? 'text-white' : 'text-black'}`}>
@@ -330,7 +330,7 @@ const FreelancerDashboard = () => {
                   </div>
                   <div className={`w-full ${isDarkTheme ? 'bg-black border border-white' : 'bg-white border border-gray-200'} rounded-full h-3`}>
                     <div
-                      className={`h-3 rounded-full ${isDarkTheme ? 'bg-white' : 'bg-black'} transition-all`}
+                      className={`h-3 rounded-full ${isDarkTheme ? 'bg-cyan-400' : 'bg-cyan-500'} transition-all`}
                       style={{ width: `${(currentContract.earned / currentContract.budget) * 100}%` }}
                     />
                   </div>
@@ -355,12 +355,12 @@ const FreelancerDashboard = () => {
             </div>
             {/* Action Buttons */}
             <div className="flex items-center gap-3">
-              <Button className={`px-4 py-2 ${isDarkTheme ? 'bg-gradient-to-r from-blue-600 to-blue-400 text-white' : 'bg-black text-white hover:bg-gray-800'}`}>
+              <button className={`px-4 py-2 rounded-md border-1 border-gray-200 ${isDarkTheme  ? 'bg-cyan-400 text-white' : 'bg-cyan-400 text-white hover:bg-gray-800'}`}>
                 Export Report
-              </Button>
-              <Button className={`px-4 py-2 ${isDarkTheme ? 'bg-gradient-to-r from-blue-600 to-blue-400 text-white' : 'bg-black text-white hover:bg-gray-800'}`}>
+              </button>
+              <button className={`px-4 py-2 rounded-md border-1 border-gray-200 ${isDarkTheme ? 'bg-cyan-400 text-white' : 'bg-cyan-400 text-white hover:bg-gray-800'}`}>
                 New Contract
-              </Button>
+              </button>
             </div>
           </div>
         </section>

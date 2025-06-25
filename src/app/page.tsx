@@ -8,6 +8,8 @@ import PainPointsSection from "@/components/sections/PainPoints";
 import SolutionSection from '@/components/sections/SolutionSection';
 import GetStartedSection from '@/components/sections/GetStartedSection';
 import { useTheme } from "@/context/ThemeContext";
+import FaqSection from '@/components/sections/FaqSection';
+import Footer from '@/components/Footer';
 
 export default function HomePage() {
   const { theme } = useTheme();
@@ -25,7 +27,7 @@ export default function HomePage() {
     <main
       className={
         theme === "light"
-          ? "min-h-screen w-full bg-white flex flex-col"
+          ? "min-h-screen w-full bg-gray-100 flex flex-col"
           : "min-h-screen w-full bg-black flex flex-col"
       }
     >
@@ -49,19 +51,21 @@ export default function HomePage() {
         <SolutionSection />
         <div className='lg:px-70'>
           <GetStartedSection />
+          <FaqSection />
         </div>
-        <div className="my-16 w-full flex justify-center">
+        <div className="w-full flex justify-center">
           <div
             className={
               theme === "light"
-                ? "rounded-2xl p-8 w-full max-w-2xl bg-white text-black"
-                : "text-white rounded-2xl shadow-xl p-8 w-full max-w-2xl bg-transparent"
+                ? "rounded-2xl w-full max-w-2xl bg-gray-100 text-black"
+                : "text-white rounded-2xl shadow-xl w-full max-w-2xl bg-transparent"
             }
           >
             <TypewriterEffectSmoothDemo />
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

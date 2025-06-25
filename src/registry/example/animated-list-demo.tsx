@@ -8,12 +8,13 @@ interface AnimatedListDemoProps {
 export default function AnimatedListDemo({ className }: AnimatedListDemoProps) {
   const {theme} = useTheme()
   const items = [
-    "New message from John",
-    "Project deadline updated",
-    "New comment on your post",
-    "Meeting reminder",
-    "Task completed",
+    "New Web Development project posted - $500-800 • 2 freelancers applied",
+    "Perfect skill match: Mobile App Design gig posted by TechCorp",
+    "New message from client Sarah: 'Can we discuss the timeline?'",
+    "Your proposal was accepted for E-commerce Website project",
+    "Payment milestone reached: $650 released for completed project"
   ];
+
 
   return (
     <div className={cn("space-y-2", className)}>

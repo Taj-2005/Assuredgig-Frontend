@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import {useRouter} from 'next/navigation'
 import { useTheme } from '@/context/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/Footer';
 
 const faqs = [
   {
@@ -34,7 +35,7 @@ export default function ContactPage() {
       <Navbar />
       <div className={theme === 'light' ? 'min-h-screen w-full bg-white flex flex-col' : 'min-h-screen w-full bg-black flex flex-col'}>
         {/* Hero Section */}
-        <section className={theme === 'light' ? 'relative min-h-[60vh] bg-white' : 'relative min-h-[60vh] bg-black'}>
+        <section className={theme === 'light' ? 'relative min-h-[60vh] bg-gray-100 border-none' : 'relative min-h-[60vh] bg-black'}>
           {/* Background Effects */}
           <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
           <div className={theme === 'light' ? 'absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white/40' : 'absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black/40'}></div>
@@ -46,16 +47,8 @@ export default function ContactPage() {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className={theme === 'light' ? 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/10 border border-black/20 mb-8' : 'inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 mb-8'}
-              >
-                <Sparkles className={theme === 'light' ? 'w-8 h-8 text-black' : 'w-8 h-8 text-blue-400'} />
-              </motion.div>
               
-              <h1 className={theme === 'light' ? 'text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6' : 'text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6'}>
+              <h1 className={ theme === 'light' ? 'text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6 pt-5' : 'text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 pt-5'}>
                 Get in
                 <span className={theme === 'light' ? 'bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent' : 'bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent'}> Touch</span>
               </h1>
@@ -68,7 +61,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Section */}
-        <section className={theme === 'light' ? 'py-16 px-6 bg-white' : 'py-16 px-6 bg-black'}>
+        <section className={theme === 'light' ? 'py-16 px-6 bg-gray-100 border-none' : 'py-16 px-6 bg-black'}>
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               {/* Contact Form */}
@@ -77,7 +70,7 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className={theme === 'light' ? 'bg-white border border-black rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}
+                className={theme === 'light' ? 'bg-white border border-gray-200 rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}
               >
                 <h2 className={theme === 'light' ? 'text-2xl font-semibold text-black mb-6' : 'text-2xl font-semibold text-white mb-6'}>Send us a Message</h2>
                 <form className="space-y-6">
@@ -89,7 +82,7 @@ export default function ContactPage() {
                       id="name"
                       type="text"
                       placeholder="John Doe"
-                      className={theme === 'light' ? 'bg-white border-black text-black placeholder:text-gray-400' : 'bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
+                      className={theme === 'light' ? 'bg-white border-gray-200 text-black placeholder:text-gray-400' : 'bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
                     />
                   </div>
                   <div>
@@ -100,7 +93,7 @@ export default function ContactPage() {
                       id="email"
                       type="email"
                       placeholder="john@example.com"
-                      className={theme === 'light' ? 'bg-white border-black text-black placeholder:text-gray-400' : 'bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
+                      className={theme === 'light' ? 'bg-white border-gray-200 text-black placeholder:text-gray-400' : 'bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
                     />
                   </div>
                   <div>
@@ -110,7 +103,7 @@ export default function ContactPage() {
                     <Textarea
                       id="message"
                       placeholder="Your message here..."
-                      className={theme === 'light' ? 'min-h-[150px] bg-white border-black text-black placeholder:text-gray-400' : 'min-h-[150px] bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
+                      className={theme === 'light' ? 'min-h-[150px] bg-white border-gray-200 text-black placeholder:text-gray-400' : 'min-h-[150px] bg-[#0d1117] border-[#30363d] text-[#f0f6fc] placeholder:text-gray-400'}
                     />
                   </div>
                   <Button className={theme === 'light' ? 'w-full bg-black text-white hover:bg-gray-900' : 'w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:opacity-90'}>
@@ -128,12 +121,12 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 className="space-y-8"
               >
-                <div className={theme === 'light' ? 'bg-white border border-black rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}>
+                <div className={theme === 'light' ? 'bg-white border border-gray-200 rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}>
                   <h2 className={theme === 'light' ? 'text-2xl font-semibold text-black mb-6' : 'text-2xl font-semibold text-white mb-6'}>Contact Information</h2>
                   <div className="space-y-6">
                     <div className="flex items-start">
                       <div className="flex-shrink-0">
-                        <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
+                        <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-gray-200/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
                           <Mail className={theme === 'light' ? 'w-6 h-6 text-black' : 'w-6 h-6 text-blue-400'} />
                         </div>
                       </div>
@@ -144,7 +137,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-start">
                       <div className="flex-shrink-0">
-                        <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
+                        <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-gray-200/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
                           <Phone className={theme === 'light' ? 'w-6 h-6 text-black' : 'w-6 h-6 text-blue-400'} />
                         </div>
                       </div>
@@ -155,7 +148,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-start">
                       <div className="flex-shrink-0">
-                        <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
+                        <div className={theme === 'light' ? 'w-12 h-12 rounded-lg bg-black/10 border border-gray-200/20 flex items-center justify-center' : 'w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center'}>
                           <MapPin className={theme === 'light' ? 'w-6 h-6 text-black' : 'w-6 h-6 text-blue-400'} />
                         </div>
                       </div>
@@ -171,7 +164,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Business Hours */}
-                <div className={theme === 'light' ? 'bg-white border border-black rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}>
+                <div className={theme === 'light' ? 'bg-white border border-gray-200 rounded-lg p-8' : 'bg-[#161b22] border border-[#30363d] rounded-lg p-8'}>
                   <h2 className={theme === 'light' ? 'text-2xl font-semibold text-black mb-6' : 'text-2xl font-semibold text-white mb-6'}>Business Hours</h2>
                   <div className="space-y-4">
                     <div className="flex justify-between">
@@ -194,7 +187,7 @@ export default function ContactPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className={theme === 'light' ? 'py-20 px-6 bg-white' : 'py-20 px-6 bg-black'}>
+        <section className={theme === 'light' ? 'py-20 px-6 bg-gray-100' : 'py-20 px-6 bg-black'}>
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -220,7 +213,7 @@ export default function ContactPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className={theme === 'light' ? 'bg-black/5 border-black/10' : 'bg-white/5 border-white/10'}>
+                  <Card className={theme === 'light' ? 'bg-black/5 border-gray-200/10' : 'bg-white/5 border-white/10'}>
                     <CardContent className="p-6">
                       <div className="flex items-start">
                         <MessageSquare className={theme === 'light' ? 'w-6 h-6 text-black mr-4 mt-1' : 'w-6 h-6 text-white mr-4 mt-1'} />
@@ -238,7 +231,7 @@ export default function ContactPage() {
         </section>
 
         {/* Support Section */}
-        <section className={theme === 'light' ? 'py-20 px-6 bg-white' : 'py-20 px-6 bg-[#111111]'}>
+        <section className={theme === 'light' ? 'py-20 px-6 bg-gray-100' : 'py-20 px-6 bg-[#111111]'}>
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -260,15 +253,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className={theme === 'light' ? 'w-full bg-white border-t border-black/60 py-10 mt-auto' : 'w-full bg-black border-t border-blue-900/60 py-10 mt-auto'}>
-          <div className="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center">
-            <span className={theme === 'light' ? 'text-xl font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent mb-2' : 'text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-2'}>Assured Gig</span>
-            <span className={theme === 'light' ? 'text-sm text-gray-700 mb-2' : 'text-sm text-gray-500 mb-2'}>Empowering Freelancers & Clients</span>
-            <span className={theme === 'light' ? 'text-xs text-gray-500' : 'text-xs text-gray-600'}>&copy; {new Date().getFullYear()} Assured Gig. All rights reserved.</span>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );

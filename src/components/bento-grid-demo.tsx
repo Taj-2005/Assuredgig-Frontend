@@ -52,24 +52,9 @@ export default function BentoDemo() {
     description: "Showcase your work, connect your profiles, and build trust with clients.",
     href: "#",
     cta: "Learn more",
-    className: "col-span-3 lg:col-span-2",
+    className: "col-span-3",
     background: (
-      <AnimatedBeamMultipleOutputDemo className={`absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105` }/>
-    ),
-  },
-  {
-    icon: <CalendarIcon className="w-8 h-8" />,
-    title: "Calendar",
-    description: "v2 launching soon",
-    className: "col-span-3 lg:col-span-1",
-    href: "#",
-    cta: "Learn more",
-    background: (
-      <Calendar
-        mode="single"
-        selected={new Date(2025, 5, 4, 0, 0, 0)}
-        className={`absolute right-0 top-10 origin-top scale-90 rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-95 ${theme === "light" ? "bg-white" : "bg-black text-white"}`}
-      />
+      <AnimatedBeamMultipleOutputDemo className={`absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105 ${theme === "light" ? 'text-black' : 'text-white'}` }/>
     ),
   },
 ];
